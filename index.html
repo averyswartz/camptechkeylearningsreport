@@ -2713,12 +2713,15 @@
       border-bottom: none;
     }
 
-    @media (max-width: 540px) {
-      .feature-table { font-size: 0.85rem; }
-      .feature-table thead th { font-size: 0.7rem; padding: 0.7rem 0.5rem; }
-      .feature-table tbody th { font-size: 0.85rem; padding: 0.7rem 0.5rem; }
-      .feature-table tbody td { padding: 0.7rem 0.5rem; }
-      .feature-table tbody td.checked span { width: 26px; height: 26px; font-size: 0.85rem; }
+    /* On mobile, let the feature table fit the screen instead of scrolling */
+    @media (max-width: 720px) {
+      .feature-chart { padding: 1.25rem 0.5rem 1.1rem; }
+      .feature-table { min-width: 0; font-size: 0.8rem; }
+      .feature-table thead th { font-size: 0.62rem; padding: 0.5rem 0.25rem; letter-spacing: 0.01em; }
+      .feature-table thead th:first-child { font-size: 0.58rem; }
+      .feature-table tbody th { font-size: 0.74rem; padding: 0.55rem 0.3rem; }
+      .feature-table tbody td { padding: 0.55rem 0.2rem; }
+      .feature-table tbody td.checked span { width: 20px; height: 20px; font-size: 0.68rem; }
     }
 </style>
 </head>
