@@ -1,0 +1,4036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <title>What We Learned: AI Skills Training Across Canada — Camp Tech</title>
+  <meta name="description" content="What drives AI adoption in Canadian small businesses? Camp Tech trained 200+ SMEs from coast to coast, and this report shares the four things we learned." />
+  <meta property="og:title" content="What We Learned: AI Skills Training Across Canada" />
+  <meta property="og:description" content="What drives AI adoption in Canadian small businesses? Camp Tech trained 200+ SMEs from coast to coast, and this report shares the four things we learned." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="assets/social-share.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Camp Tech Key Learnings Report: What drives AI adoption in Canadian small businesses." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What We Learned: AI Skills Training Across Canada" />
+  <meta name="twitter:description" content="What drives AI adoption in Canadian small businesses? Camp Tech trained 200+ SMEs from coast to coast, and this report shares the four things we learned." />
+  <meta name="twitter:image" content="assets/social-share.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <style>
+    /* ============================================
+       TOKENS
+       ============================================ */
+    :root {
+      --green: #344E42;
+      --green-dark: #233328;
+      --green-deep: #1B271F;
+      --pumpkin: #FA8334;
+      --pumpkin-soft: #FBA968;
+      --black: #222222;
+      --lace: #F5EEDE;
+      --lace-deep: #ECE2CB;
+      --jade: #26A96C;
+      --violet: #462255;
+      --white: #FFFFFF;
+      --muted: #5C6B62;
+      --rule: rgba(34, 34, 34, 0.12);
+
+      --max: 1180px;
+      --gutter: clamp(20px, 4vw, 56px);
+
+      --font-sans: 'Inter', -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+      --radius: 14px;
+      --shadow: 0 4px 24px rgba(34, 34, 34, 0.08);
+      --shadow-strong: 0 12px 48px rgba(34, 34, 34, 0.16);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--black);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    h1, h2, h3, h4, h5 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin: 0 0 0.4em;
+      color: var(--green);
+    }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.6rem); letter-spacing: -0.03em; }
+    h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); }
+    h3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); }
+    h4 { font-size: 1.1rem; }
+    p { margin: 0 0 1em; }
+    a { color: var(--pumpkin); text-decoration: none; border-bottom: 1px solid currentColor; }
+    a:hover { color: var(--green); }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--pumpkin);
+      margin: 0 0 1rem;
+    }
+
+    /* ============================================
+       READING PROGRESS BAR
+       ============================================ */
+    .progress {
+      position: fixed;
+      top: 0; left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--pumpkin);
+      z-index: 100;
+      transition: width 0.05s linear;
+    }
+
+    /* ============================================
+       STICKY NAV
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(245, 238, 222, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+      z-index: 50;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+    .nav.is-visible { transform: translateY(0); }
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0.85rem var(--gutter);
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .nav__brand {
+      font-weight: 700;
+      color: var(--green);
+      border-bottom: none;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+    }
+    .nav__links {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      margin-left: auto;
+    }
+    .nav__links a {
+      color: var(--black);
+      border-bottom: none;
+      font-weight: 500;
+    }
+    .nav__links a:hover { color: var(--pumpkin); }
+    @media (max-width: 860px) {
+      .nav { display: none; }
+    }
+
+    /* ============================================
+       HERO
+       ============================================ */
+    .hero {
+      background: var(--green);
+      color: var(--lace);
+      padding: clamp(80px, 14vh, 140px) 0 clamp(40px, 8vh, 80px);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__inner { position: relative; margin-top: 100px; }
+    .hero__logo-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      max-width: 1500px;
+      margin: 0 auto;
+      z-index: 2;
+    }
+    .hero__logo {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 130px;
+      height: auto;
+    }
+    @media (max-width: 720px) {
+      .hero__logo { width: 96px; top: 1.1rem; right: 1.1rem; }
+      .hero__inner { margin-top: 60px; }
+    }
+    .hero__eyebrow {
+      color: var(--pumpkin);
+      margin-bottom: 1.5rem;
+      padding-right: 150px;
+    }
+    @media (max-width: 720px) {
+      .hero__eyebrow { padding-right: 110px; }
+    }
+    .hero h1 {
+      color: var(--lace);
+      max-width: 22ch;
+      margin-bottom: 1.4rem;
+    }
+    .hero__h1-lead { display: block; }
+    .hero__h1-sub {
+      display: block;
+      font-size: 0.62em;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      opacity: 0.85;
+      margin-top: 0.5rem;
+      line-height: 1.2;
+    }
+    .hero__lede {
+      max-width: 56ch;
+      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+      color: rgba(245, 238, 222, 0.85);
+      margin-bottom: 3rem;
+    }
+    .hero__tagline {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border: 1px solid rgba(250, 131, 52, 0.45);
+      border-radius: 999px;
+      color: var(--pumpkin);
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 3rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(245, 238, 222, 0.18);
+    }
+    .stat__num {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--lace);
+      line-height: 1;
+      margin: 0 0 0.4rem;
+    }
+    .stat__num .suffix {
+      color: var(--pumpkin);
+      font-size: 0.7em;
+      vertical-align: 0.05em;
+    }
+    .stat__label {
+      font-size: 0.92rem;
+      color: rgba(245, 238, 222, 0.7);
+      line-height: 1.35;
+    }
+    @media (max-width: 720px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ============================================
+       SECTION SHARED
+       ============================================ */
+    section { padding: clamp(60px, 10vh, 120px) 0; }
+    .section--lace { background: var(--lace); }
+    .section--white { background: var(--white); }
+    .section--green { background: var(--green); color: var(--lace); }
+    .section--green h2, .section--green h3 { color: var(--lace); }
+
+    .section__head {
+      max-width: 60ch;
+      margin: 0 0 3rem;
+    }
+    .section__head p {
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    /* Reveal on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       PROGRAM CARDS
+       ============================================ */
+    .programs__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 860px) {
+      .programs__grid { grid-template-columns: 1fr; }
+    }
+    .program {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .program:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+    }
+    .program__photo {
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      width: 100%;
+    }
+    .program__body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+    .program__badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .program__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--pumpkin);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+    }
+    .program__badge--alt {
+      background: var(--green);
+    }
+    .program__name { color: var(--green); font-size: 1.55rem; margin-bottom: 0.6rem; }
+    .program__sub {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+    /* Program card — header info */
+    .program__dates {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pumpkin);
+      margin: 0 0 0.6rem;
+    }
+    .program__dates-note {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 0.15rem;
+    }
+    .program__count {
+      font-size: 1.05rem;
+      line-height: 1.4;
+      color: var(--green);
+      margin: 0 0 1.1rem;
+    }
+    .program__count strong {
+      font-weight: 800;
+    }
+    /* Program card — partners & funders footer */
+    .program__credits {
+      margin-top: 1.5rem;
+      padding-top: 1.1rem;
+      border-top: 1px dashed var(--rule);
+    }
+    .program__credits-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 0.4rem;
+    }
+    .program__credits-body {
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: var(--muted);
+      margin: 0;
+    }
+    .program__about {
+      font-size: 0.96rem;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+    }
+    .program__meta {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.4rem 1rem;
+      font-size: 0.92rem;
+      margin: 1rem 0 1.5rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .program__meta dt { font-weight: 600; color: var(--green); }
+    .program__meta dd { margin: 0; color: var(--black); }
+    .program__attribution {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: auto;
+    }
+    .program__attribution strong { color: var(--black); font-weight: 600; }
+    .program__cohort-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .program__cohort-list li {
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      position: relative;
+      color: var(--black);
+      border-top: 1px solid var(--rule);
+    }
+    .program__cohort-list li:first-child { border-top: none; padding-top: 0.25rem; }
+    .program__cohort-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.95rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--pumpkin);
+    }
+    .program__cohort-list li:first-child::before { top: 0.7rem; }
+    .program__cohort-list strong { color: var(--green); font-weight: 700; }
+
+    /* ============================================
+       PROGRAM IMPACT STATS (EAAL)
+       ============================================ */
+    .impact-band {
+      background: var(--green);
+      color: var(--lace);
+      padding: 3rem 0;
+      margin-top: 4rem;
+      border-radius: var(--radius);
+    }
+    .impact-band__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding: 0 var(--gutter);
+    }
+    .impact-band__head {
+      max-width: var(--max);
+      margin: 0 auto 2rem;
+      padding: 0 var(--gutter);
+    }
+    .impact-band__head h3 { color: var(--lace); margin-bottom: 0.4rem; }
+    .impact-band__head p { color: rgba(245, 238, 222, 0.7); font-size: 0.95rem; margin: 0; }
+    .impact-stat {
+      text-align: left;
+    }
+    .impact-stat__num {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--pumpkin);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .impact-stat__label {
+      font-size: 0.92rem;
+      color: rgba(245, 238, 222, 0.85);
+      line-height: 1.4;
+    }
+    @media (max-width: 720px) {
+      .impact-band__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ============================================
+       COHORT MAP
+       ============================================ */
+    .map-section {
+      padding: clamp(40px, 6vh, 80px) 0 clamp(60px, 10vh, 120px);
+    }
+    .map-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .map-wrap svg { width: 100%; height: auto; display: block; }
+    .map-caption {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 56ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .map-caption strong { color: var(--green); font-weight: 700; }
+
+    /* ============================================
+       FRAME (we meet people where they are)
+       ============================================ */
+    .frame {
+      text-align: center;
+    }
+    .frame__quote {
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+      font-weight: 600;
+      color: var(--green);
+      max-width: 28ch;
+      margin: 0 auto 1.5rem;
+      letter-spacing: -0.015em;
+      line-height: 1.25;
+    }
+    .frame__body {
+      max-width: 60ch;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    /* ============================================
+       LEARNINGS
+       ============================================ */
+    .learning {
+      border-top: 1px solid var(--rule);
+    }
+    .learning__inner {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: clamp(1.5rem, 3vw, 3rem);
+      align-items: start;
+    }
+    @media (max-width: 720px) {
+      .learning__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    .learning__num {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      color: var(--pumpkin);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .learning__title {
+      color: var(--green);
+      max-width: 22ch;
+      margin-bottom: 1.2rem;
+    }
+    .learning__lede {
+      font-size: 1.2rem;
+      color: var(--black);
+      max-width: 60ch;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+    .learning__body {
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 62ch;
+    }
+    .learning__body strong { color: var(--black); }
+    .learning__viz {
+      margin: 3rem 0;
+    }
+    .learning__photo {
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 2rem 0;
+      box-shadow: var(--shadow);
+      max-height: 420px;
+    }
+    .learning__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Pull quote */
+    .pq {
+      border-left: 3px solid var(--pumpkin);
+      padding: 0.4rem 0 0.4rem 1.4rem;
+      margin: 2rem 0;
+      max-width: 56ch;
+    }
+    .pq__text {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--black);
+      line-height: 1.45;
+      margin-bottom: 0.5rem;
+    }
+    .pq__attr {
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ============================================
+       VIZ — TRIPTYCH (Learning 1)
+       ============================================ */
+    .triptych {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 720px) {
+      .triptych { grid-template-columns: 1fr; }
+    }
+    .trip-card {
+      padding: 1.6rem;
+      border-radius: var(--radius);
+      color: var(--white);
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s ease;
+    }
+    .trip-card:hover { transform: translateY(-4px); }
+    .trip-card--1 { background: var(--green); }
+    .trip-card--2 { background: var(--pumpkin); }
+    .trip-card--3 { background: var(--violet); }
+    .trip-card__num {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 0.6rem;
+    }
+    .trip-card__title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: inherit;
+    }
+    .trip-card__list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .trip-card__list li {
+      padding: 0.35rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    /* ============================================
+       STRANDS VISUALIZATION (Learning 1)
+       ============================================ */
+    .strands-viz {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 2rem 2.5rem;
+      border: 1px solid var(--rule);
+      margin: 1.5rem 0 2rem;
+    }
+    .strands-viz__caption {
+      font-size: 0.95rem;
+      color: var(--green);
+      font-weight: 600;
+      margin: 0 0 1.5rem;
+      text-align: center;
+    }
+    .strands-viz__footnote {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 1.2rem 0 0;
+      text-align: center;
+    }
+
+    .strands {
+      position: relative;
+    }
+
+    .strands__weeks {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      margin-bottom: 0.6rem;
+      padding-left: 130px;
+    }
+    .strands__weeks span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    @media (max-width: 720px) {
+      .strands__weeks { padding-left: 0; }
+      .strands__weeks span:nth-child(2),
+      .strands__weeks span:nth-child(4) { display: none; }
+    }
+
+    .strand {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 1.4rem 0;
+    }
+    .strand + .strand {
+      border-top: 1px dashed rgba(34, 34, 34, 0.1);
+    }
+    @media (max-width: 720px) {
+      .strand { grid-template-columns: 1fr; gap: 0.5rem; padding: 1rem 0; }
+    }
+
+    .strand__label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: right;
+      letter-spacing: -0.01em;
+    }
+    @media (max-width: 720px) {
+      .strand__label { text-align: left; }
+    }
+    .strand--fundamentals .strand__label { color: var(--green); }
+    .strand--usecase .strand__label { color: var(--pumpkin); }
+    .strand--leadership .strand__label { color: var(--violet); }
+
+    .strand__track {
+      position: relative;
+      height: 70px;
+    }
+
+    .strand__ribbon {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 14px;
+      transform: translateY(-50%);
+      border-radius: 999px;
+      opacity: 0.25;
+    }
+    .strand--fundamentals .strand__ribbon { background: var(--green); }
+    .strand--usecase .strand__ribbon { background: var(--pumpkin); }
+    .strand--leadership .strand__ribbon { background: var(--violet); }
+
+    .strand__moment {
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--white);
+      border: 2px solid;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      z-index: 2;
+      color: var(--black);
+      line-height: 1;
+    }
+    .strand--fundamentals .strand__moment { border-color: var(--green); }
+    .strand--usecase .strand__moment { border-color: var(--pumpkin); }
+    .strand--leadership .strand__moment { border-color: var(--violet); }
+
+    @media (max-width: 720px) {
+      .strand__track {
+        height: auto;
+        padding: 0.6rem 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .strand__ribbon { display: none; }
+      .strand__moment {
+        position: static;
+        transform: none;
+        background: var(--white);
+        margin: 0;
+      }
+    }
+
+    /* ============================================
+       STRAND DEFINITION CARDS (Learning 1)
+       ============================================ */
+    .strand-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0 0;
+    }
+    @media (max-width: 720px) {
+      .strand-cards { grid-template-columns: 1fr; }
+    }
+    .strand-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--rule);
+      box-shadow: var(--shadow);
+    }
+    .strand-card__bar {
+      height: 8px;
+    }
+    .strand-card--fundamentals .strand-card__bar { background: var(--green); }
+    .strand-card--usecase .strand-card__bar { background: var(--pumpkin); }
+    .strand-card--leadership .strand-card__bar { background: var(--violet); }
+
+    .strand-card__body {
+      padding: 1.75rem 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .strand-card__title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--green);
+      margin: 0 0 0.4rem;
+      letter-spacing: -0.02em;
+    }
+    .strand-card--usecase .strand-card__title { color: var(--pumpkin); }
+    .strand-card--leadership .strand-card__title { color: var(--violet); }
+    .strand-card__subhead {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--black);
+      margin: 0 0 0.9rem;
+      font-style: italic;
+    }
+    .strand-card__desc {
+      font-size: 0.92rem;
+      color: var(--black);
+      line-height: 1.55;
+      margin: 0 0 1rem;
+    }
+    .strand-card__list {
+      list-style: none;
+      padding: 0;
+      margin: auto 0 0;
+      border-top: 1px solid var(--rule);
+      padding-top: 1rem;
+    }
+    .strand-card__list li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 0.3rem 0;
+      line-height: 1.4;
+    }
+
+    /* ============================================
+       FORMAT CARDS (Learning 3)
+       ============================================ */
+    .format-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0 0;
+    }
+    @media (max-width: 720px) {
+      .format-cards { grid-template-columns: 1fr; }
+    }
+    .format-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--rule);
+      box-shadow: var(--shadow);
+    }
+    .format-card__bar {
+      height: 8px;
+    }
+    .format-card--inperson .format-card__bar { background: var(--green); }
+    .format-card--virtual .format-card__bar { background: var(--pumpkin); }
+    .format-card--hybrid .format-card__bar { background: var(--violet); }
+    .format-card__body {
+      padding: 1.75rem 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .format-card__title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--green);
+      margin: 0 0 0.6rem;
+      letter-spacing: -0.02em;
+    }
+    .format-card--virtual .format-card__title { color: var(--pumpkin); }
+    .format-card--hybrid .format-card__title { color: var(--violet); }
+    .format-card__desc {
+      font-size: 0.92rem;
+      color: var(--black);
+      line-height: 1.55;
+      margin: 0 0 1rem;
+    }
+    .format-card__list {
+      list-style: none;
+      padding: 0;
+      margin: auto 0 0;
+      border-top: 1px solid var(--rule);
+      padding-top: 1rem;
+    }
+    .format-card__list li {
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 0.3rem 0;
+      line-height: 1.4;
+    }
+
+    /* ============================================
+       RIBBON ILLUSTRATION (Learning 1) — static image
+       ============================================ */
+    .braid-viz {
+      margin: 2rem 0 2rem;
+      text-align: center;
+    }
+    .braid-image {
+      display: block;
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       VIZ — CURVES (Learning 2)
+       ============================================ */
+    .curves {
+      background: var(--lace);
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 720px;
+    }
+    .curves svg { width: 100%; height: auto; display: block; }
+    .curves-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+    .curves-legend span { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .curves-legend i {
+      width: 22px; height: 3px; border-radius: 2px;
+    }
+    .curves-legend i.learn { background: var(--green); }
+    .curves-legend i.adopt { background: var(--pumpkin); }
+
+    /* ============================================
+       VIZ — CADENCE (Learning 3)
+       ============================================ */
+    .cadence {
+      max-width: 760px;
+    }
+    .cadence-row {
+      display: flex;
+      gap: 0.6rem;
+      align-items: stretch;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    .cadence-week {
+      flex: 1;
+      min-width: 90px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 1rem 0.6rem;
+      text-align: center;
+      position: relative;
+    }
+    .cadence-week .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .cadence-week .num {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--green);
+      line-height: 1;
+    }
+    .cadence-marker {
+      display: inline-block;
+      background: var(--pumpkin);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      margin-top: 0.6rem;
+    }
+    .cadence-arrow {
+      align-self: center;
+      color: var(--muted);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    /* ============================================
+       VIZ — BAR COMPARE (Learnings 4 + 6)
+       ============================================ */
+    .compare {
+      max-width: 700px;
+    }
+    .compare__row {
+      display: grid;
+      grid-template-columns: 200px 1fr 60px;
+      gap: 1rem;
+      align-items: center;
+      margin: 1rem 0;
+    }
+    @media (max-width: 720px) {
+      .compare__row { grid-template-columns: 1fr; gap: 0.4rem; }
+    }
+    .compare__label {
+      font-weight: 600;
+      color: var(--black);
+      font-size: 0.95rem;
+    }
+    .compare__bar {
+      background: var(--lace);
+      border-radius: 999px;
+      height: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .compare__fill {
+      height: 100%;
+      border-radius: 999px;
+      width: 0%;
+      transition: width 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .compare__fill--strong { background: var(--green); }
+    .compare__fill--medium { background: var(--pumpkin); }
+    .compare__fill--soft { background: var(--pumpkin-soft); }
+    .compare__num {
+      font-weight: 700;
+      color: var(--green);
+      font-size: 0.95rem;
+      text-align: right;
+    }
+    .compare__caveat {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    /* ============================================
+       EAI CONFIDENCE-FLOORS BLOCK (Real Barrier section)
+       ============================================ */
+    /* Real Barrier — two-column parallel-gap research block */
+    .barrier-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.75rem 0 0.5rem;
+    }
+    @media (max-width: 720px) {
+      .barrier-cols { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+    .barrier-col {
+      background: var(--lace);
+      border-radius: var(--radius);
+      border-top: 3px solid var(--pumpkin);
+      padding: 1.4rem 1.5rem;
+    }
+    .barrier-col__head {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+      margin: 0 0 0.6rem;
+    }
+    .barrier-col__body {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Real Barrier — two-column data area, matched bar charts */
+    .data-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin: 1.25rem 0 0.5rem;
+    }
+    @media (max-width: 720px) {
+      .data-cols { grid-template-columns: 1fr; gap: 2.25rem; }
+    }
+    .data-col__head {
+      color: var(--green);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem;
+    }
+    .data-col__intro {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--muted);
+      margin: 0 0 1.4rem;
+    }
+    .dbar { margin: 0.95rem 0; }
+    .dbar__label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+    .dbar__row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.7rem;
+      align-items: center;
+    }
+    .dbar__track {
+      background: var(--lace);
+      border-radius: 999px;
+      height: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dbar__fill {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      background: var(--green);
+      border-radius: 999px;
+    }
+    .dbar__fill--soft { background: #9DB0A4; }
+    .dbar__num {
+      font-weight: 700;
+      color: var(--green);
+      font-size: 0.9rem;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Real Barrier — boxed closing statement */
+    .barrier-conclusion {
+      background: var(--lace);
+      border-left: 4px solid var(--pumpkin);
+      border-radius: var(--radius);
+      padding: 1.7rem 1.9rem;
+      margin: 2.5rem 0 0;
+    }
+    .barrier-conclusion__lead {
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--green);
+      letter-spacing: -0.01em;
+      margin: 0 0 0.8rem;
+    }
+    .barrier-conclusion__support {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--black);
+      margin: 0;
+    }
+
+    .floors-viz {
+      margin: 1rem 0 2rem;
+      padding: 1.75rem 1.5rem 1.75rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--rule);
+    }
+    .floors-viz__intro {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--black);
+      margin: 0 0 1.5rem;
+      max-width: 64ch;
+    }
+    .floors-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 0 0 1.5rem;
+    }
+    @media (max-width: 720px) {
+      .floors-stats { grid-template-columns: 1fr; gap: 0.9rem; }
+    }
+    .floor-stat {
+      padding: 1.25rem 1rem;
+      background: var(--lace);
+      border-radius: 10px;
+      text-align: center;
+    }
+    .floor-stat__range {
+      font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.55rem;
+    }
+    .floor-stat__label {
+      font-size: 0.85rem;
+      color: var(--black);
+      line-height: 1.4;
+      max-width: 22ch;
+      margin: 0 auto;
+    }
+    .floors-viz__punchline {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      font-weight: 700;
+      color: var(--pumpkin);
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin: 0;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ============================================
+       VIZ — NEW HYBRID (Learning 5, FEATURED)
+       ============================================ */
+    .learning--featured {
+      background: var(--lace);
+    }
+    .hybrid {
+      margin-top: 2rem;
+    }
+    .hybrid__caption {
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pumpkin);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .hybrid__strip {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0.5rem;
+      margin: 1rem 0 2rem;
+    }
+    @media (max-width: 720px) {
+      .hybrid__strip { grid-template-columns: repeat(3, 1fr); }
+    }
+    .hybrid-step {
+      background: var(--white);
+      border: 2px solid var(--rule);
+      border-radius: 12px;
+      padding: 1.2rem 0.8rem;
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.4s ease;
+    }
+    .hybrid.is-visible .hybrid-step {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .hybrid-step--ip { border-color: var(--green); background: rgba(52, 78, 66, 0.04); }
+    .hybrid-step--on { border-color: var(--pumpkin); background: rgba(250, 131, 52, 0.04); }
+    .hybrid-step__num {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .hybrid-step__mode {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--green);
+      margin-bottom: 0.4rem;
+    }
+    .hybrid-step--on .hybrid-step__mode { color: var(--pumpkin); }
+    .hybrid-step__why {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .hybrid__legend {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+    .hybrid__legend span::before {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 14px;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+      border: 2px solid;
+    }
+    .hybrid__legend .ip::before { border-color: var(--green); background: rgba(52, 78, 66, 0.04); }
+    .hybrid__legend .on::before { border-color: var(--pumpkin); background: rgba(250, 131, 52, 0.04); }
+
+    /* ============================================
+       ADOPTION MAP PLACEHOLDER
+       ============================================ */
+    .adoption-placeholder {
+      background: var(--green);
+      color: var(--lace);
+      border-radius: var(--radius);
+      padding: 3rem 2rem;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .adoption-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(250, 131, 52, 0.2), transparent 60%);
+      pointer-events: none;
+    }
+    .adoption-placeholder h3 {
+      color: var(--lace);
+      margin-bottom: 0.6rem;
+    }
+    .adoption-placeholder p {
+      color: rgba(245, 238, 222, 0.8);
+      max-width: 50ch;
+      margin: 0 auto;
+    }
+    .coming-soon-tag {
+      display: inline-block;
+      background: var(--pumpkin);
+      color: var(--white);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ============================================
+       CTA
+       ============================================ */
+    .cta {
+      background: var(--green);
+      color: var(--lace);
+      text-align: center;
+    }
+    .cta h2 { color: var(--lace); max-width: 22ch; margin: 0 auto 1.2rem; }
+    .cta p {
+      max-width: 56ch;
+      margin: 0 auto 2.5rem;
+      color: rgba(245, 238, 222, 0.85);
+      font-size: 1.1rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--pumpkin);
+      color: var(--white);
+      padding: 1rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border: none;
+      transition: transform 0.2s ease, background 0.2s ease;
+      font-size: 1rem;
+    }
+    .btn:hover {
+      background: var(--white);
+      color: var(--green);
+      transform: translateY(-2px);
+    }
+    a.btn { border-bottom: none; }
+
+    /* CTA button row + secondary "share" button (mockup) */
+    .cta__buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--lace);
+      border: 1px solid rgba(245, 238, 222, 0.5);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .btn--ghost svg {
+      width: 1.05rem;
+      height: 1.05rem;
+      flex-shrink: 0;
+    }
+    .btn--ghost:hover,
+    .btn--ghost.is-copied {
+      background: var(--lace);
+      color: var(--green);
+      border-color: var(--lace);
+    }
+
+    /* ============================================
+       FOOTER / CREDITS
+       ============================================ */
+    .credits {
+      background: var(--lace);
+      padding: 4rem 0 2rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .credits h4 {
+      color: var(--green);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .credits__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 720px) {
+      .credits__grid { grid-template-columns: 1fr; }
+    }
+    .logo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .logo-row img {
+      max-height: 44px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+    .logo-row img:hover { opacity: 1; }
+    .logo-row--hosts {
+      gap: 1.5rem;
+      margin-top: 0.75rem;
+    }
+    .logo-row--hosts img {
+      max-height: 35px;
+    }
+    .credits__bottom {
+      border-top: 1px solid var(--rule);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .credits__bottom a { color: var(--muted); }
+
+    /* ============================================
+       UTILS
+       ============================================ */
+    .visually-hidden {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
+    }
+  
+    /* ============================================
+       AI ADOPTION ATLAS
+       ============================================ */
+    .atlas-section { background: var(--lace); }
+    .atlas-intro {
+      max-width: 62ch;
+      margin: 0 0 2.5rem;
+    }
+    .atlas-intro p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin: 0;
+    }
+    .atlas-intro p + p { margin-top: 0.8rem; }
+    .atlas-subhead {
+      font-size: 0.74rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--pumpkin);
+      margin: 0 0 1.2rem;
+    }
+    .atlas-block + .atlas-block { margin-top: 3.5rem; }
+
+    /* Phase labels above the Climb */
+    .climb-phases {
+      display: grid;
+      grid-template-columns: 2fr 1fr 2fr;
+      gap: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .climb-phase {
+      padding: 0.55rem 0.85rem;
+      background: var(--white);
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid var(--rule);
+    }
+    .climb-phase__label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--pumpkin);
+      margin-bottom: 0.15rem;
+    }
+    .climb-phase__name {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--green);
+      line-height: 1.2;
+    }
+    @media (max-width: 860px) {
+      .climb-phases { display: none; }
+    }
+
+    /* The Climb */
+    .climb__steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      align-items: stretch;
+    }
+    .climb-step {
+      padding: 1.4rem 1.1rem 1.2rem;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: transform 0.4s ease;
+    }
+    .climb-step:hover { transform: translateY(-3px); }
+    .climb-step--1 { background: var(--white); color: var(--green); min-height: 170px; border: 1px solid var(--rule); }
+    .climb-step--2 { background: var(--jade); color: var(--white); min-height: 200px; }
+    .climb-step--3 { background: var(--green); color: var(--lace); min-height: 230px; }
+    .climb-step--4 { background: var(--pumpkin); color: var(--white); min-height: 260px; }
+    .climb-step--5 { background: var(--violet); color: var(--lace); min-height: 290px; }
+    .climb-step__num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+    }
+    .climb-step__name {
+      font-size: clamp(1rem, 1.55vw, 1.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin: 0 0 0.5rem;
+      color: inherit;
+    }
+    .climb-step__tag {
+      font-size: 0.88rem;
+      font-style: italic;
+      opacity: 0.85;
+      line-height: 1.35;
+    }
+    @media (max-width: 860px) {
+      .climb__steps { grid-template-columns: 1fr; gap: 6px; }
+      .climb-step { min-height: 0 !important; padding: 1rem 1.1rem; }
+    }
+
+    /* Compact 7-dimension list */
+    .dims-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 3rem;
+      margin: 1rem 0 0;
+    }
+    @media (max-width: 720px) {
+      .dims-list { grid-template-columns: 1fr; gap: 0; }
+    }
+    .dim-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    .dim-row__name {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
+    }
+    .dim-row__desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+    @media (max-width: 720px) {
+      .dim-row { grid-template-columns: 1fr; gap: 0.2rem; padding: 0.7rem 0; }
+    }
+
+    /* 7-dimension icon grid (index-alt) */
+    .dimension-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 1.25rem 0 0;
+    }
+    @media (max-width: 860px) {
+      .dimension-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .dimension-grid { grid-template-columns: 1fr; }
+    }
+    .dimension-item {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 1.3rem 1.2rem;
+    }
+    .dimension-item__icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(250, 131, 52, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.9rem;
+    }
+    .dimension-item__icon {
+      width: 26px;
+      height: 26px;
+      color: var(--pumpkin);
+      display: block;
+    }
+    .dimension-item__name {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem;
+    }
+    .dimension-item__desc {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    /* Looking ahead — forward timeline (index-alt) */
+    .ahead-timeline {
+      display: flex;
+      margin-top: 1.5rem;
+    }
+    .timeline-step {
+      flex: 1;
+    }
+    .timeline-step__top {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .timeline-step__node {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+    .timeline-step__line {
+      flex: 1;
+      height: 2px;
+      background: var(--rule);
+      position: relative;
+      margin: 0 4px;
+    }
+    .timeline-step__line::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left: 7px solid var(--rule);
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+    }
+    .timeline-step:last-child .timeline-step__line { display: none; }
+    .timeline-step__text { padding-right: 1.25rem; }
+    .timeline-step:last-child .timeline-step__text { padding-right: 0; }
+    .timeline-step--1 .timeline-step__node { background: var(--jade); }
+    .timeline-step--2 .timeline-step__node { background: var(--green); }
+    .timeline-step--3 .timeline-step__node { background: var(--pumpkin); }
+    .timeline-step--4 .timeline-step__node { background: var(--violet); }
+    .timeline-step__label {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.4rem;
+    }
+    .timeline-step__desc {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+      margin: 0;
+    }
+    @media (max-width: 720px) {
+      .ahead-timeline { flex-direction: column; gap: 1.25rem; }
+      .timeline-step { display: flex; gap: 1rem; align-items: flex-start; }
+      .timeline-step__top { margin-bottom: 0; flex-shrink: 0; }
+      .timeline-step__line { display: none; }
+      .timeline-step__text { padding-right: 0; }
+    }
+
+    /* Matrix (visible, compact) */
+    .matrix-block { margin-top: 3.5rem; }
+    .matrix-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 1rem;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 0;
+      border: 1px solid var(--rule);
+    }
+    .matrix__table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.82rem;
+      min-width: 760px;
+    }
+    .matrix__table thead th {
+      background: var(--white);
+      color: var(--green);
+      font-weight: 700;
+      padding: 0.85rem 0.8rem;
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.78rem;
+      line-height: 1.3;
+      border-bottom: 2px solid var(--green);
+    }
+    .matrix__table thead th .stage-num {
+      display: block;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      color: var(--pumpkin);
+      margin-bottom: 0.2rem;
+      font-weight: 700;
+    }
+    .matrix__table thead th:first-child {
+      background: transparent;
+      border-bottom-color: transparent;
+    }
+    .matrix__table tbody th {
+      color: var(--green);
+      font-weight: 700;
+      background: var(--white);
+      padding: 0.8rem 0.75rem;
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.85rem;
+      line-height: 1.3;
+      border-right: 2px solid var(--green);
+      width: 16%;
+    }
+    .matrix__table tbody td {
+      padding: 0.8rem 0.75rem;
+      vertical-align: top;
+      line-height: 1.4;
+      border-bottom: 1px solid rgba(52, 78, 66, 0.08);
+    }
+    .matrix__table tbody td.s1 { background: #F5EEDE; color: var(--green); }
+    .matrix__table tbody td.s2 { background: #DDD2AE; color: var(--green); }
+    .matrix__table tbody td.s3 { background: #7E8C82; color: var(--lace); }
+    .matrix__table tbody td.s4 { background: #4E605A; color: var(--lace); }
+    .matrix__table tbody td.s5 { background: var(--green); color: var(--lace); }
+
+    /* 3-step assessment */
+    .placement-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1rem 0 1.5rem;
+    }
+    @media (max-width: 760px) {
+      .placement-steps { grid-template-columns: 1fr; }
+    }
+    .placement-step {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.25rem 1.2rem;
+      border-top: 3px solid var(--pumpkin);
+    }
+    .placement-step__num {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--pumpkin);
+      margin-bottom: 0.4rem;
+    }
+    .placement-step__title {
+      color: var(--green);
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .placement-step__body {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .uneven-note {
+      background: var(--green);
+      color: rgba(245, 238, 222, 0.95);
+      border-radius: 12px;
+      padding: 1.1rem 1.4rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      border-left: 3px solid var(--pumpkin);
+    }
+    .uneven-note strong { color: var(--pumpkin); }
+
+    /* Compact metrics bullet grid */
+    .track-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem 2rem;
+      margin: 1rem 0 0;
+    }
+    @media (max-width: 720px) {
+      .track-grid { grid-template-columns: 1fr; }
+    }
+    .track-grid li {
+      list-style: none;
+      padding: 0.55rem 0 0.55rem 1.4rem;
+      position: relative;
+      color: var(--black);
+      font-size: 0.92rem;
+      line-height: 1.45;
+      border-top: 1px solid var(--rule);
+    }
+    .track-grid li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 1.05rem;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--pumpkin);
+    }
+
+    /* Looking ahead */
+    .ahead-uses {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+      margin: 1.25rem 0 0;
+    }
+    @media (max-width: 1000px) {
+      .ahead-uses { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 540px) {
+      .ahead-uses { grid-template-columns: 1fr; }
+    }
+    .ahead-use {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.1rem 1.1rem 1.15rem;
+      border-left: 3px solid var(--pumpkin);
+    }
+    .ahead-use__when {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--pumpkin);
+      margin-bottom: 0.35rem;
+    }
+    .ahead-use__title {
+      color: var(--green);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    
+    /* Framing section (no number) */
+    .learning--framing .learning__inner {
+      grid-template-columns: 1fr;
+    }
+
+    /* Growth chart (Learning 02) */
+    .growth-chart {
+      max-width: 780px;
+    }
+    .growth-row {
+      display: grid;
+      grid-template-columns: minmax(170px, 1.2fr) minmax(0, 2.5fr) 64px;
+      gap: 1rem;
+      align-items: center;
+      margin: 1.1rem 0;
+    }
+    @media (max-width: 720px) {
+      .growth-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    }
+    .growth-row__label {
+      font-weight: 600;
+      color: var(--green);
+      font-size: 0.92rem;
+      line-height: 1.3;
+    }
+    .growth-row__bars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .growth-bar {
+      height: 20px;
+      border-radius: 999px;
+      width: 0%;
+      transition: width 1.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      display: flex;
+      align-items: center;
+      padding: 0 0.65rem;
+      min-width: 36px;
+    }
+    .growth-bar span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .growth-bar--baseline { background: var(--green); }
+    .growth-bar--endline { background: var(--pumpkin); }
+    .growth-row__delta {
+      font-weight: 800;
+      color: var(--green);
+      font-size: 1.05rem;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .growth-legend {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+    .growth-legend span { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .growth-legend i {
+      width: 14px; height: 14px; border-radius: 50%;
+      display: inline-block;
+    }
+    .growth-legend i.baseline-dot { background: var(--green); }
+    .growth-legend i.endline-dot { background: var(--pumpkin); }
+
+    /* Format comparison table (Learning 03) */
+    .format-table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--rule);
+      margin-top: 1rem;
+    }
+    .format-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.9rem;
+      min-width: 620px;
+    }
+    .format-table thead th {
+      background: var(--green);
+      color: var(--lace);
+      font-weight: 700;
+      padding: 0.85rem 0.9rem;
+      text-align: left;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+    .format-table thead th:not(:first-child) { text-align: center; }
+    .format-table tbody th {
+      text-align: left;
+      font-weight: 600;
+      color: var(--green);
+      padding: 0.85rem 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.88rem;
+    }
+    .format-table tbody td {
+      padding: 0.85rem 0.9rem;
+      text-align: center;
+      border-bottom: 1px solid var(--rule);
+      color: var(--black);
+      font-variant-numeric: tabular-nums;
+    }
+    .format-table tbody tr:nth-child(even) th,
+    .format-table tbody tr:nth-child(even) td {
+      background: var(--lace);
+    }
+    .format-table tbody td.winner {
+      color: var(--pumpkin);
+      font-weight: 700;
+    }
+
+    /* Coaching stats (Learning 04) */
+    .coaching-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      margin: 1.75rem 0;
+      background: var(--green);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    @media (max-width: 720px) {
+      .coaching-stats { grid-template-columns: 1fr; }
+    }
+    .coaching-stat {
+      padding: 2.6rem 1.5rem;
+      text-align: center;
+    }
+    .coaching-stat + .coaching-stat {
+      border-left: 1px solid rgba(245, 238, 222, 0.15);
+    }
+    @media (max-width: 720px) {
+      .coaching-stat + .coaching-stat {
+        border-left: none;
+        border-top: 1px solid rgba(245, 238, 222, 0.15);
+      }
+    }
+    .coaching-stat__num {
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      font-weight: 800;
+      color: var(--pumpkin);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.7rem;
+    }
+    .coaching-stat__label {
+      font-size: 0.95rem;
+      color: var(--lace);
+      line-height: 1.45;
+      font-weight: 500;
+      max-width: 26ch;
+      margin: 0 auto;
+    }
+    .coaching-callout {
+      background: var(--lace);
+      border-left: 4px solid var(--pumpkin);
+      border-radius: var(--radius);
+      padding: 1.7rem 1.9rem;
+      margin: 2rem 0;
+    }
+    .coaching-callout p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1.35;
+      color: var(--green);
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .coaching-quotes {
+      display: grid;
+      gap: 0.8rem;
+      margin: 1.2rem 0 1.5rem;
+    }
+
+    /* Quote cards — testimonial treatment */
+    .quote-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 720px) {
+      .quote-cards { grid-template-columns: 1fr; }
+    }
+    .quote-card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.4rem 1.6rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .quote-card__mark {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3rem;
+      line-height: 0.6;
+      color: var(--pumpkin);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .quote-card__text {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--black);
+      margin: 0 0 1.1rem;
+    }
+    .quote-card__attr {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: auto 0 0;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ============================================
+       CONCLUSION — Business impact
+       ============================================ */
+    .impact {
+      padding: clamp(60px, 9vh, 100px) 0;
+    }
+    .impact__inner {
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .impact__title {
+      font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+      color: var(--green);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin: 0.6rem auto 1.25rem;
+      max-width: 26ch;
+    }
+    .impact__lede {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--black);
+      margin: 0 auto 2.5rem;
+      max-width: 60ch;
+    }
+    .impact__close {
+      font-size: 1.25rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--green);
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+      margin: 3rem auto 0;
+      max-width: 38ch;
+    }
+    .impact-row {
+      margin: 0 0 2.5rem;
+    }
+    .impact-row__source {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pumpkin);
+      margin: 0 0 1.2rem;
+      text-align: center;
+    }
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 860px) {
+      .impact-stats { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+    .impact-stat {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 1.4rem;
+      text-align: center;
+      border: 1px solid var(--rule);
+    }
+    .impact-stat__num {
+      font-size: clamp(2.6rem, 5.4vw, 4rem);
+      font-weight: 800;
+      color: var(--violet);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.9rem;
+    }
+    .impact-stat__num .suffix {
+      font-size: 0.65em;
+      margin-left: 0.04em;
+    }
+    .impact-stat__label {
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    /* ============================================
+       FORMAT BLOCKS (Learning 3 sub-learnings)
+       ============================================ */
+    .format-block {
+      margin-top: 3rem;
+      padding: 2rem 2rem 2.25rem;
+      border-radius: var(--radius);
+      border-left: 6px solid var(--green);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .format-block + .format-block { margin-top: 2.5rem; }
+
+    .format-block--inperson { border-left-color: var(--green); }
+    .format-block--online { border-left-color: var(--pumpkin); }
+    .format-block--hybrid { border-left-color: var(--violet); }
+
+    .format-block__marker {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+    .format-block--inperson .format-block__marker { background: var(--green); }
+    .format-block--online .format-block__marker { background: var(--pumpkin); }
+    .format-block--hybrid .format-block__marker { background: var(--violet); }
+
+    .format-block__title {
+      color: var(--green);
+      font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+      margin: 0 0 1.5rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .format-block__body {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 1.5rem 0;
+      color: var(--black);
+    }
+
+    /* Scoreboard visualization (in-person block) */
+    .scoreboard {
+      background: var(--lace);
+      padding: 1.5rem 1.5rem 1.6rem;
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+    }
+    .scoreboard__label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--green);
+      margin: 0 0 1rem;
+    }
+    .scoreboard__row {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .scoreboard__mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      background: rgba(34, 34, 34, 0.06);
+      border: 2px solid rgba(34, 34, 34, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: rgba(34, 34, 34, 0.25);
+    }
+    .scoreboard__mark--win {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--lace);
+    }
+    @media (max-width: 540px) {
+      .scoreboard__mark { width: 38px; height: 38px; font-size: 1rem; }
+    }
+
+    /* Dual-stat visualization (online block) */
+    .dual-stat {
+      background: var(--lace);
+      padding: 2rem 1.5rem;
+      border-radius: var(--radius);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1.5rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 640px) {
+      .dual-stat { grid-template-columns: 1fr; gap: 1.25rem; }
+      .dual-stat__divider { display: none; }
+    }
+    .dual-stat__half { text-align: center; }
+    .dual-stat__num {
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      font-weight: 800;
+      color: var(--pumpkin);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .dual-stat__label {
+      font-size: 0.92rem;
+      color: var(--green);
+      line-height: 1.4;
+      max-width: 28ch;
+      margin: 0 auto;
+    }
+    .dual-stat__divider {
+      width: 1px;
+      background: rgba(34, 34, 34, 0.15);
+      height: 80%;
+      align-self: center;
+    }
+
+    /* Mini stat row */
+    .format-block__stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 0 0 1.5rem;
+    }
+    .format-block__stats--paired { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 640px) {
+      .format-block__stats,
+      .format-block__stats--paired { grid-template-columns: 1fr; }
+    }
+    .mini-stat {
+      padding: 1.1rem 1rem;
+      background: var(--lace);
+      border-radius: 10px;
+      text-align: center;
+    }
+    .mini-stat__num {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .format-block--online .mini-stat__num { color: var(--pumpkin); }
+    .format-block--hybrid .mini-stat__num { color: var(--green); }
+    .mini-stat__label {
+      font-size: 0.82rem;
+      color: var(--black);
+      line-height: 1.35;
+    }
+    .mini-stat__label span {
+      display: inline-block;
+      margin-top: 0.2rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-style: italic;
+    }
+
+    /* Pull quote inside format blocks */
+    .format-block .pq {
+      margin-top: 1.25rem;
+      margin-bottom: 0;
+    }
+
+
+    /* L01 layer card subhead */
+    .trip-card__subhead {
+      font-size: 0.98rem;
+      font-weight: 700;
+      font-style: italic;
+      margin: 0 0 0.6rem;
+      opacity: 0.95;
+      letter-spacing: -0.01em;
+    }
+
+    /* Atlas note callout (sits right under the intro) */
+    .atlas-note {
+      max-width: 62ch;
+      margin: 0 0 3rem;
+      padding: 1rem 1.25rem;
+      background: var(--lace);
+      border-left: 3px solid var(--pumpkin);
+      border-radius: 6px;
+      color: var(--green);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* Atlas looking-ahead bullet list */
+    .ahead-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+    .ahead-list li {
+      position: relative;
+      padding: 0.7rem 0 0.7rem 1.4rem;
+      border-top: 1px solid var(--rule);
+      color: var(--black);
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+    .ahead-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.1rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--pumpkin);
+    }
+    .ahead-list strong { color: var(--green); }
+
+    /* ============================================
+       LOOPING CYCLE VISUALIZATION (Learning 2)
+       ============================================ */
+    .cycle-viz {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem 2rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .cycle-viz__caption {
+      font-size: 0.95rem;
+      color: var(--green);
+      font-weight: 600;
+      margin: 0 0 1.5rem;
+      text-align: center;
+    }
+    .cycle-viz__footnote {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 1.25rem 0 0;
+      text-align: center;
+    }
+
+    .cycle {
+      max-width: 540px;
+      margin: 0;
+    }
+    .cycle__svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Node pulse animation — each node lights up in sequence */
+    @keyframes nodePulse {
+      0%, 20%   { transform: scale(1); }
+      10%       { transform: scale(1.08); }
+      25%, 100% { transform: scale(1); }
+    }
+    @keyframes nodeColor {
+      0%, 20%   { fill: #344E42; }
+      10%       { fill: #FA8334; }
+      25%, 100% { fill: #344E42; }
+    }
+    .cycle__node circle {
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+    .cycle__node--1 circle { animation: nodePulse 4s ease-in-out infinite, nodeColor 4s ease-in-out infinite; animation-delay: 0s, 0s; }
+    .cycle__node--2 circle { animation: nodePulse 4s ease-in-out infinite, nodeColor 4s ease-in-out infinite; animation-delay: 1s, 1s; }
+    .cycle__node--3 circle { animation: nodePulse 4s ease-in-out infinite, nodeColor 4s ease-in-out infinite; animation-delay: 2s, 2s; }
+    .cycle__node--4 circle { animation: nodePulse 4s ease-in-out infinite, nodeColor 4s ease-in-out infinite; animation-delay: 3s, 3s; }
+
+    /* Subtle pulse on the connecting arrows */
+    @keyframes arrowFlash {
+      0%, 90%, 100% { stroke-opacity: 0.35; }
+      10%, 25%      { stroke-opacity: 1; }
+    }
+    .cycle__arrow {
+      stroke-opacity: 0.35;
+      animation: arrowFlash 4s ease-in-out infinite;
+    }
+    .cycle__arrow--1 { animation-delay: 0s; }
+    .cycle__arrow--2 { animation-delay: 1s; }
+    .cycle__arrow--3 { animation-delay: 2s; }
+    .cycle__arrow--4 { animation-delay: 3s; }
+
+    /* The center circle subtly pulses to suggest "repeats" */
+    .cycle__center circle {
+      transform-origin: 300px 300px;
+      animation: centerBreathe 4s ease-in-out infinite;
+    }
+    @keyframes centerBreathe {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.04); }
+    }
+
+    /* Week counter: six stacked text elements, only one visible at a time */
+    .cycle__week {
+      opacity: 0;
+      animation: weekShow 24s linear infinite;
+    }
+    .cycle__week--1 { animation-delay: 0s; }
+    .cycle__week--2 { animation-delay: 4s; }
+    .cycle__week--3 { animation-delay: 8s; }
+    .cycle__week--4 { animation-delay: 12s; }
+    .cycle__week--5 { animation-delay: 16s; }
+    .cycle__week--6 { animation-delay: 20s; }
+
+    @keyframes weekShow {
+      0%, 16.67%        { opacity: 1; }
+      16.68%, 100%      { opacity: 0; }
+    }
+
+    /* Respect reduced-motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      .cycle__node circle,
+      .cycle__arrow,
+      .cycle__center circle,
+      .cycle__week { animation: none; }
+      .cycle__arrow { stroke-opacity: 0.8; }
+      .cycle__week { opacity: 0; }
+      .cycle__week--1 { opacity: 1; }
+    }
+
+    /* ============================================
+       FORMAT DEFINITION CARDS (Learning 3)
+       ============================================ */
+    .format-defs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      margin: 2rem 0 2.5rem;
+    }
+    @media (max-width: 860px) {
+      .format-defs { grid-template-columns: 1fr; }
+    }
+    .format-def {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.4rem 1.5rem;
+      border: 1px solid var(--rule);
+      border-top: 4px solid var(--green);
+    }
+    .format-def--inperson { border-top-color: var(--green); }
+    .format-def--virtual  { border-top-color: var(--pumpkin); }
+    .format-def--hybrid   { border-top-color: var(--violet); }
+    .format-def__name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.6rem;
+      color: var(--green);
+    }
+    .format-def--virtual .format-def__name { color: var(--pumpkin); }
+    .format-def--hybrid  .format-def__name { color: var(--violet); }
+    .format-def__desc {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--black);
+      margin: 0;
+    }
+
+    /* ============================================
+       FEATURE COMPARISON CHART (Learning 3)
+       ============================================ */
+    .feature-chart {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem 1.75rem;
+      border: 1px solid var(--rule);
+      margin: 1rem 0 2.5rem;
+    }
+    .feature-chart__caption {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--green);
+      line-height: 1.5;
+      max-width: 64ch;
+      margin: 0 auto 1.5rem;
+      text-align: center;
+    }
+    .feature-chart__footnote {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-style: italic;
+      margin: 1rem 0 0;
+      text-align: center;
+    }
+    .feature-chart__scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .feature-table {
+      width: 100%;
+      min-width: 560px;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: 0.95rem;
+    }
+    .feature-table thead th {
+      padding: 0.9rem 0.9rem;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--lace);
+      background: var(--green);
+    }
+    .feature-table thead th:first-child {
+      text-align: left;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+    .feature-table thead .feature-table__col--inperson { background: var(--green); }
+    .feature-table thead .feature-table__col--virtual  { background: var(--pumpkin); }
+    .feature-table thead .feature-table__col--hybrid   { background: var(--violet); }
+
+    .feature-table tbody th {
+      text-align: left;
+      font-weight: 600;
+      color: var(--green);
+      padding: 0.9rem 0.9rem;
+      font-size: 0.92rem;
+      border-bottom: 1px solid var(--rule);
+      background: transparent;
+    }
+    .feature-table tbody td {
+      text-align: center;
+      padding: 0.9rem 0.9rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 1.15rem;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+    .feature-table tbody td.checked span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .feature-table tbody td.checked--inperson { background: rgba(52, 78, 66, 0.08); }
+    .feature-table tbody td.checked--virtual  { background: rgba(250, 131, 52, 0.08); }
+    .feature-table tbody td.checked--hybrid   { background: rgba(70, 34, 85, 0.08); }
+    .feature-table tbody td.checked--inperson span { background: var(--green); }
+    .feature-table tbody td.checked--virtual span  { background: var(--pumpkin); }
+    .feature-table tbody td.checked--hybrid span   { background: var(--violet); }
+
+    .feature-table tbody td.unchecked {
+      background: rgba(34, 34, 34, 0.02);
+      position: relative;
+    }
+    .feature-table tbody td.unchecked::after {
+      content: '—';
+      color: rgba(34, 34, 34, 0.2);
+      font-weight: 400;
+      font-size: 1.2rem;
+    }
+    .feature-table tbody tr:last-child th,
+    .feature-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    @media (max-width: 540px) {
+      .feature-table { font-size: 0.85rem; }
+      .feature-table thead th { font-size: 0.7rem; padding: 0.7rem 0.5rem; }
+      .feature-table tbody th { font-size: 0.85rem; padding: 0.7rem 0.5rem; }
+      .feature-table tbody td { padding: 0.7rem 0.5rem; }
+      .feature-table tbody td.checked span { width: 26px; height: 26px; font-size: 0.85rem; }
+    }
+</style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <nav class="nav" id="nav" aria-label="Section navigation">
+    <div class="nav__inner">
+      <a href="#top" class="nav__brand">Camp Tech · Key Learnings Report</a>
+      <div class="nav__links">
+        <a href="#programs">Programs</a>
+        <a href="#map">Map</a>
+        <a href="#real-barrier">Hypothesis</a>
+        <a href="#l1">01</a>
+        <a href="#l2">02</a>
+        <a href="#l3">03</a>
+        <a href="#l4">04</a>
+        <a href="#impact">Impact</a>
+        <a href="#adoption-map">Atlas</a>
+        <a href="#cta">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <a id="top"></a>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero">
+    <div class="hero__logo-wrap">
+      <img class="hero__logo" src="assets/logos/CampTechLogo-AllWhite.png" alt="Camp Tech" />
+    </div>
+    <div class="container hero__inner">
+      <p class="eyebrow hero__eyebrow">A key learnings report from Camp Tech</p>
+      <h1><span class="hero__h1-lead">What drives AI adoption in Canadian small businesses.</span><span class="hero__h1-sub">Here's what we learned teaching SMEs from coast to coast to coast.</span></h1>
+      <p class="hero__lede">Between April 2025 and April 2026, Camp Tech delivered two pilot programs designed to bring AI training to small businesses outside Canada's largest cities. This report shares our insights. </p>
+
+      <div class="stats" id="hero-stats">
+        <div class="stat">
+          <div class="stat__num" data-target="200" data-suffix="+">0<span class="suffix">+</span></div>
+          <div class="stat__label">Businesses trained across two programs</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num" data-target="240" data-suffix="+">0<span class="suffix">+</span></div>
+          <div class="stat__label">Learners participated</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num" data-target="67" data-suffix="">0</div>
+          <div class="stat__label">Cities and towns reached</div>
+        </div>
+        <div class="stat">
+          <div class="stat__num" data-target="9" data-suffix="">0</div>
+          <div class="stat__label">Provinces and territories</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+    <!-- ============================================
+       PROGRAMS
+       ============================================ -->
+  <section class="section--white" id="programs">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">The two programs</p>
+        <h2>What we built, and who we built it with.</h2>
+      </div>
+
+      <div class="programs__grid">
+        <!-- EAAL -->
+        <article class="program reveal">
+          <img class="program__photo" alt="Participants at an Early AI Adoption Lab cohort gathered for a group photo" src="assets/photos/eaal-c2-group-alt.jpg" />
+          <div class="program__body">
+            <h3 class="program__name">Early AI Adoption Lab</h3>
+            <p class="program__dates">April 2025 — April 2026</p>
+            <p class="program__count"><strong>148 participants</strong> across four cohorts</p>
+            <p class="program__about">A national program supporting early stage women and non-binary entrepreneurs as they adopt AI into their businesses. Camp Tech designed and delivered the training in a variety of formats, and provided 1:1 mentorship. Entrepreneurs developed personalized 30-60-90 day roadmaps for their AI adoption.</p>
+            <p class="program__about" style="margin-bottom: 0.6rem;">The pilot ran across four cohorts:</p>
+            <ul class="program__cohort-list">
+              <li><strong>North Bay, Ontario:</strong> fully in-person, six weeks</li>
+              <li><strong>Halifax, Nova Scotia:</strong> fully in-person, five weeks</li>
+              <li><strong>Live Online:</strong> fully virtual, six weeks</li>
+              <li><strong>Whitehorse, Yukon:</strong> "new hybrid", five weeks</li>
+            </ul>
+            <div class="program__credits">
+              <p class="program__credits-label">Partners &amp; funders</p>
+              <p class="program__credits-body">Part of the AI Skills Lab Canada initiative, presented by The Forum, Camp Tech, and Growclass, with co-investment from DIGITAL, Canada's Global Innovation Cluster for digital technologies.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- BBAA -->
+        <article class="program reveal">
+          <img class="program__photo" alt="Participants at a Building Blueprints for AI Adoption workshop in Northern Ontario" src="assets/photos/bbaa-c1-group.jpg" />
+          <div class="program__body">
+            <h3 class="program__name">Building Blueprints for AI Adoption</h3>
+            <p class="program__dates">April 2025 — April 2027 <span class="program__dates-note">(training delivered September 2025 — April 2026)</span></p>
+            <p class="program__count"><strong>90 participants</strong> from <strong>49 companies</strong> across two cohorts</p>
+            <p class="program__about">The first AI adoption program of its kind built specifically for Northern Ontario SMEs. Camp Tech designed the content, delivered the training, and supported participants with 1:1 coaching. Every business that came through the program left with a customized AI adoption blueprint.</p>
+            <p class="program__about" style="margin-bottom: 0.6rem;">The pilot ran across two cohorts:</p>
+            <ul class="program__cohort-list">
+              <li><strong>Sault Ste Marie, including Algoma and Manitoulin Island:</strong> "new hybrid", five weeks</li>
+              <li><strong>Thunder Bay, including Dryden and Kenora:</strong> "new hybrid", five weeks</li>
+            </ul>
+            <div class="program__credits">
+              <p class="program__credits-label">Partners &amp; funders</p>
+              <p class="program__credits-body">Delivered through a partnership of Sault Ste Marie Innovation Centre, Northwestern Ontario Innovation Centre, and Camp Tech, with support from FedNor and the Government of Canada.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       MAP SECTION
+       ============================================ -->
+  <section class="section--lace map-section" id="map">
+    <div class="container">
+      <div class="section__head reveal" style="text-align: center; margin: 0 auto 2.5rem;">
+        <p class="eyebrow">Where they came from</p>
+        <h2 style="max-width: 22ch; margin: 0 auto 1rem;">Participants joined from every corner of the country.</h2>
+        <p style="margin: 0 auto;">67 cities and towns, 9 provinces and territories. From Mayo in the Yukon to Sydney, Nova Scotia, and dozens of communities in between.</p>
+      </div>
+
+      <div class="map-wrap reveal">
+        <svg id="canada-map-svg" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of Canada showing participant locations across nine provinces and territories">
+          <title>Where participants came from across Canada</title>
+          <text id="map-loading" x="500" y="300" text-anchor="middle" fill="#5C6B62" font-family="Inter, system-ui, sans-serif" font-size="14" opacity="0.7">Loading map of Canada...</text>
+        </svg>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FRAMING — The real barrier
+       ============================================ -->
+  <section class="learning section--white learning--framing" id="real-barrier">
+    <div class="container">
+      <div class="learning__inner reveal">
+        <div>
+          <p class="eyebrow">The starting hypothesis</p>
+          <h2 class="learning__title">The real barrier to AI adoption is not what you might think.</h2>
+          <p class="learning__lede">It isn't capability. It's confidence. Structured support is needed to move people from AI uncertainty to use. </p>
+          <div class="barrier-cols">
+            <div class="barrier-col">
+              <p class="barrier-col__head">Women entrepreneurs face a confidence gap, not a capability gap.</p>
+              <p class="barrier-col__body">A Harvard Business School <a href="https://www.library.hbs.edu/working-knowledge/women-are-avoiding-using-artificial-intelligence-can-that-hurt-their-careers" target="_blank" rel="noopener">study of 17,000 entrepreneurs in Kenya</a> invited participants to use ChatGPT with free access and instructions. Even with access equalized, women were around 13 percent less likely to engage with the tool. Deloitte's <a href="https://www.deloitte.com/uk/en/about/press-room/over-eighteen-million-people-in-the-uk-have-now-used-generative-ai.html" target="_blank" rel="noopener">2024 UK consumer survey</a> found that 28 percent of women use generative AI compared to 43 percent of men.</p>
+            </div>
+            <div class="barrier-col">
+              <p class="barrier-col__head">Canadian rural and remote SMEs face a parallel gap.</p>
+              <p class="barrier-col__body">The Toronto Metropolitan University Diversity Institute's 2025 report, <a href="https://www.torontomu.ca/diversity/reports/bridging-the-ai-gap-in-smes-in-canada/" target="_blank" rel="noopener"><em>Bridging the AI Gap in SMEs in Canada</em></a>, states plainly that AI adoption is "not exclusively a technical challenge; it is also a skills and confidence challenge." The Canadian Chamber of Commerce's <a href="https://businessdatalab.ca/publications/prompting-productivity-generative-ai-adoption-by-canadian-businesses/" target="_blank" rel="noopener">Prompting Productivity report</a> found that urban businesses adopt generative AI at nearly double the rate of rural businesses (15 percent versus 8 percent).</p>
+            </div>
+          </div>
+
+          <p class="eyebrow" style="margin-top:2.5rem;">What our own data confirms</p>
+          <p class="learning__body">Two very different audiences named the same problem in their own words.</p>
+
+          <!-- Two-column data area: EAI results | BBAA results -->
+          <div class="data-cols">
+            <div class="data-col">
+              <h4 class="data-col__head">Early AI Adoption Lab</h4>
+              <p class="data-col__intro">At the start of the program, participants self-rated their confidence and knowledge. Across all four cohorts, every measure landed low.</p>
+              <div class="dbar">
+                <div class="dbar__label">Confidence in integrating AI</div>
+                <div class="dbar__row">
+                  <div class="dbar__track"><div class="dbar__fill" style="left:40%;width:14%;"></div></div>
+                  <div class="dbar__num">40&ndash;54%</div>
+                </div>
+              </div>
+              <div class="dbar">
+                <div class="dbar__label">Knowledge of selecting AI platforms</div>
+                <div class="dbar__row">
+                  <div class="dbar__track"><div class="dbar__fill" style="left:26%;width:15%;"></div></div>
+                  <div class="dbar__num">26&ndash;41%</div>
+                </div>
+              </div>
+              <div class="dbar">
+                <div class="dbar__label">Setting up AI systems and processes</div>
+                <div class="dbar__row">
+                  <div class="dbar__track"><div class="dbar__fill" style="left:26%;width:11%;"></div></div>
+                  <div class="dbar__num">26&ndash;37%</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="data-col">
+              <h4 class="data-col__head">Building Blueprints for AI Adoption</h4>
+              <p class="data-col__intro">We asked what's preventing Northern Ontario SMEs from using AI more effectively. It's not the cost of tools. It's confidence, not knowing where to start, and doubt that they can adopt AI safely.</p>
+              <div class="dbar">
+                <div class="dbar__label">Lack of internal skills or training</div>
+                <div class="dbar__row">
+                  <div class="dbar__track"><div class="dbar__fill" style="left:0;width:82%;"></div></div>
+                  <div class="dbar__num">82%</div>
+                </div>
+              </div>
+              <div class="dbar">
+                <div class="dbar__label">Not sure where to start</div>
+                <div class="dbar__row">
+                  <div class="dbar__track"><div class="dbar__fill" style="left:0;width:49%;"></div></div>
+                  <div class="dbar__num">49%</div>
+                </div>
+              </div>
+              <div class="dbar">
+                <div class="dbar__label">Concerns about accuracy or trust</div>
+                <div class="dbar__row">
+                  <div class="dbar__track"><div class="dbar__fill" style="left:0;width:47%;"></div></div>
+                  <div class="dbar__num">47%</div>
+                </div>
+              </div>
+              <div class="dbar">
+                <div class="dbar__label">Cost of tools</div>
+                <div class="dbar__row">
+                  <div class="dbar__track"><div class="dbar__fill dbar__fill--soft" style="left:0;width:27%;"></div></div>
+                  <div class="dbar__num">27%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="barrier-conclusion">
+            <p class="barrier-conclusion__lead">The mechanism that closes the gap is community, coaching, and confidence-building.</p>
+            <p class="barrier-conclusion__support">The Diversity Institute report specifically recommends solutions that combine "applied, accessible tools and strategies, ecosystem-wide support, and a focus on confidence-building alongside skill-building." Participants showed significant growth in both our programs, proving that training plus support is the recipe for success. </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  
+
+  
+
+  <!-- ============================================
+       LEARNING 01 — Three types of training
+       ============================================ -->
+  <section class="learning section--lace" id="l1">
+    <div class="container">
+      <div class="learning__inner reveal">
+        <div class="learning__num">01</div>
+        <div>
+          <p class="eyebrow">Key Learning:</p>
+          <h2 class="learning__title">Effective AI training has three strands, and they need to be woven through the entire program.</h2>
+          <p class="learning__lede">Fundamentals build the foundation. Use-case training meets people where they work. Leadership training sets the direction. These threads run in parallel, reinforce each other, and show up at different moments in the same program. Missing any one of them leaves the work incomplete.</p>
+
+          <!-- THREE STRAND DEFINITION CARDS (moved up) -->
+          <div class="strand-cards">
+            <div class="strand-card strand-card--fundamentals">
+              <div class="strand-card__bar"></div>
+              <div class="strand-card__body">
+                <h3 class="strand-card__title">Fundamentals</h3>
+                <p class="strand-card__desc">A grounded understanding of what generative AI actually is, and where to start with it.</p>
+                <ul class="strand-card__list">
+                  <li>How generative AI works</li>
+                  <li>Basic prompting techniques</li>
+                  <li>Hallucinations and bias</li>
+                  <li>Intro to ethical AI use</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="strand-card strand-card--usecase">
+              <div class="strand-card__bar"></div>
+              <div class="strand-card__body">
+                <h3 class="strand-card__title">Use-case training</h3>
+                <p class="strand-card__desc">Hands-on, scenario-based training that meets people in the work they actually do.</p>
+                <ul class="strand-card__list">
+                  <li>Admin, communications, operations</li>
+                  <li>Marketing, sales, customer service</li>
+                  <li>HR, finance, project management</li>
+                  <li>Real exercises, real outputs</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="strand-card strand-card--leadership">
+              <div class="strand-card__bar"></div>
+              <div class="strand-card__body">
+                <h3 class="strand-card__title">Leadership</h3>
+                <p class="strand-card__desc">Practical training for building an AI-forward culture that is aligned with organizational values.</p>
+                <ul class="strand-card__list">
+                  <li>AI use policies and disclosure</li>
+                  <li>Data privacy and security</li>
+                  <li>Risk and regulation</li>
+                  <li>Values-aligned AI use</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="learning__viz growth-chart">
+            <h4 style="margin-bottom:0.4rem;color:var(--green);">Where participants started, and where they ended up</h4>
+            <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1.4rem;">This is the self-rated knowledge before and after participants took part in the North Bay (in-person) cohort of the Early AI Adoption Lab, on a 1-5 scale. </p>
+
+            <div class="growth-row">
+              <div class="growth-row__label">Ability to identify business areas for AI</div>
+              <div class="growth-row__bars">
+                <div class="growth-bar growth-bar--baseline" data-pct="48"><span>2.4</span></div>
+                <div class="growth-bar growth-bar--endline" data-pct="82"><span>4.1</span></div>
+              </div>
+              <div class="growth-row__delta">+70%</div>
+            </div>
+
+            <div class="growth-row">
+              <div class="growth-row__label">Confidence in selecting AI platforms</div>
+              <div class="growth-row__bars">
+                <div class="growth-bar growth-bar--baseline" data-pct="39"><span>1.9</span></div>
+                <div class="growth-bar growth-bar--endline" data-pct="75"><span>3.7</span></div>
+              </div>
+              <div class="growth-row__delta">+92%</div>
+            </div>
+
+            <div class="growth-row">
+              <div class="growth-row__label">Confidence in setting up AI systems &amp; processes</div>
+              <div class="growth-row__bars">
+                <div class="growth-bar growth-bar--baseline" data-pct="38"><span>1.9</span></div>
+                <div class="growth-bar growth-bar--endline" data-pct="71"><span>3.5</span></div>
+              </div>
+              <div class="growth-row__delta">+86%</div>
+            </div>
+
+            <div class="growth-row">
+              <div class="growth-row__label">Ability to navigate AI ethics &amp; regulation</div>
+              <div class="growth-row__bars">
+                <div class="growth-bar growth-bar--baseline" data-pct="27"><span>1.4</span></div>
+                <div class="growth-bar growth-bar--endline" data-pct="79"><span>3.9</span></div>
+              </div>
+              <div class="growth-row__delta">+189%</div>
+            </div>
+
+            <div class="growth-legend">
+              <span><i class="baseline-dot"></i>Where they started</span>
+              <span><i class="endline-dot"></i>Where they ended</span>
+            </div>
+          </div>
+
+  
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- ============================================
+       LEARNING 02 — Longer programs build habits
+       ============================================ -->
+  <section class="learning section--white" id="l2">
+    <div class="container">
+      <div class="learning__inner reveal">
+        <div class="learning__num">02</div>
+        <div>
+          <p class="eyebrow">Key Learning:</p>
+          <h2 class="learning__title">Longer programs build habits, not just knowledge.</h2>
+          <p class="learning__lede">Successful AI training is a factor of both the total hours spent in workshops and the breathing room between sessions. It allows for participants to test their learning at work, hit something that doesn't behave the way they expected, and bring the question back to the next session. Confidence compounds over time, until the version of the person who finishes the program behaves meaningfully different from the version who started it.</p>
+
+          <!-- LOOPING CYCLE DIAGRAM -->
+          <div class="learning__viz cycle-viz">
+            <div class="cycle">
+              <svg class="cycle__svg" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A four-step weekly cycle: Workshop, Apply, Roadblock, Bring it back, repeating.">
+                <defs>
+                  <marker id="cycle-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#344E42" />
+                  </marker>
+                </defs>
+
+                <path class="cycle__arrow cycle__arrow--1" d="M 365 110 A 200 200 0 0 1 490 235" fill="none" stroke="#344E42" stroke-width="3" stroke-linecap="round" marker-end="url(#cycle-arrow)" />
+                <path class="cycle__arrow cycle__arrow--2" d="M 490 365 A 200 200 0 0 1 365 490" fill="none" stroke="#344E42" stroke-width="3" stroke-linecap="round" marker-end="url(#cycle-arrow)" />
+                <path class="cycle__arrow cycle__arrow--3" d="M 235 490 A 200 200 0 0 1 110 365" fill="none" stroke="#344E42" stroke-width="3" stroke-linecap="round" marker-end="url(#cycle-arrow)" />
+                <path class="cycle__arrow cycle__arrow--4" d="M 110 235 A 200 200 0 0 1 235 110" fill="none" stroke="#344E42" stroke-width="3" stroke-linecap="round" marker-end="url(#cycle-arrow)" />
+
+                <circle class="cycle__traveler cycle__traveler--1" r="9" fill="#FA8334">
+                  <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" begin="0s"
+                    path="M 365 110 A 200 200 0 0 1 490 235" />
+                </circle>
+                <circle class="cycle__traveler cycle__traveler--2" r="9" fill="#FA8334">
+                  <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" begin="1s"
+                    path="M 490 365 A 200 200 0 0 1 365 490" />
+                </circle>
+                <circle class="cycle__traveler cycle__traveler--3" r="9" fill="#FA8334">
+                  <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" begin="2s"
+                    path="M 235 490 A 200 200 0 0 1 110 365" />
+                </circle>
+                <circle class="cycle__traveler cycle__traveler--4" r="9" fill="#FA8334">
+                  <animateMotion dur="4s" repeatCount="indefinite" rotate="auto" begin="3s"
+                    path="M 110 235 A 200 200 0 0 1 235 110" />
+                </circle>
+
+                <g class="cycle__node cycle__node--1">
+                  <circle cx="300" cy="80" r="65" fill="#344E42" />
+                  <text x="300" y="88" text-anchor="middle" fill="#F5EEDE" font-family="inherit" font-size="22" font-weight="700">Workshop</text>
+                </g>
+
+                <g class="cycle__node cycle__node--2">
+                  <circle cx="520" cy="300" r="65" fill="#344E42" />
+                  <text x="520" y="308" text-anchor="middle" fill="#F5EEDE" font-family="inherit" font-size="22" font-weight="700">Apply</text>
+                </g>
+
+                <g class="cycle__node cycle__node--3">
+                  <circle cx="300" cy="520" r="65" fill="#344E42" />
+                  <text x="300" y="528" text-anchor="middle" fill="#F5EEDE" font-family="inherit" font-size="22" font-weight="700">Roadblock</text>
+                </g>
+
+                <g class="cycle__node cycle__node--4">
+                  <circle cx="80" cy="300" r="65" fill="#344E42" />
+                  <text x="80" y="296" text-anchor="middle" fill="#F5EEDE" font-family="inherit" font-size="20" font-weight="700">Bring it</text>
+                  <text x="80" y="316" text-anchor="middle" fill="#F5EEDE" font-family="inherit" font-size="20" font-weight="700">back</text>
+                </g>
+
+                <g class="cycle__center">
+                  <circle cx="300" cy="300" r="80" fill="#F5EEDE" stroke="#344E42" stroke-width="2" />
+                  <text class="cycle__week cycle__week--1" x="300" y="315" text-anchor="middle" fill="#FA8334" font-family="inherit" font-size="38" font-weight="800">WEEK 1</text>
+                  <text class="cycle__week cycle__week--2" x="300" y="315" text-anchor="middle" fill="#FA8334" font-family="inherit" font-size="38" font-weight="800">WEEK 2</text>
+                  <text class="cycle__week cycle__week--3" x="300" y="315" text-anchor="middle" fill="#FA8334" font-family="inherit" font-size="38" font-weight="800">WEEK 3</text>
+                  <text class="cycle__week cycle__week--4" x="300" y="315" text-anchor="middle" fill="#FA8334" font-family="inherit" font-size="38" font-weight="800">WEEK 4</text>
+                  <text class="cycle__week cycle__week--5" x="300" y="315" text-anchor="middle" fill="#FA8334" font-family="inherit" font-size="38" font-weight="800">WEEK 5</text>
+                  <text class="cycle__week cycle__week--6" x="300" y="315" text-anchor="middle" fill="#FA8334" font-family="inherit" font-size="38" font-weight="800">WEEK 6</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+        
+
+
+          <div class="quote-cards">
+            <div class="quote-card">
+              <span class="quote-card__mark" aria-hidden="true">“</span>
+              <p class="quote-card__text">I valued the space and time carved out to experiment. Without the program, it would have been all too easy to deprioritize learning about AI in favour of more urgent tasks.</p>
+              <p class="quote-card__attr">Virtual participant, Early AI Adoption Lab</p>
+            </div>
+            <div class="quote-card">
+              <span class="quote-card__mark" aria-hidden="true">“</span>
+              <p class="quote-card__text">We thought we knew what we needed going into the program, but our plan evolved substantially as we participated in the classes. We now expect to progress much further than we had initially anticipated with a new refined plan.</p>
+              <p class="quote-card__attr">Sault Ste. Marie cohort participant, Building Blueprints for AI Adoption</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       LEARNING 03 — Delivery format
+       ============================================ -->
+  <section class="learning section--lace" id="l3">
+    <div class="container">
+      <div class="learning__inner reveal">
+        <div class="learning__num">03</div>
+        <div>
+          <p class="eyebrow">Key Learning:</p>
+          <h2 class="learning__title">How the training is delivered matters as much as what is delivered.</h2>
+          <p class="learning__lede">The delivery format is instrumental in determining how a participant will fit AI training into their everyday lives. We tested three delivery formats across six cohorts: </p>
+
+
+
+          <!-- FORMAT CARDS -->
+          <div class="format-cards">
+
+            <div class="format-card format-card--inperson">
+              <div class="format-card__bar"></div>
+              <div class="format-card__body">
+                <h3 class="format-card__title">In-person</h3>
+                <p class="format-card__desc">In-person delivery is the strongest format for the benefits that come from being in the same room. </p>
+                <ul class="format-card__list">
+                  <li>Spontaneous side conversations and hands-on support</li>
+                  <li>Peer connections that turn a cohort into a network</li>
+                  <li>Doesn't scale beyond the room</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="format-card format-card--virtual">
+              <div class="format-card__bar"></div>
+              <div class="format-card__body">
+                <h3 class="format-card__title">Virtual (live online)</h3>
+                <p class="format-card__desc">Virtual delivery is the strongest format for reach and scale. </p>
+                <ul class="format-card__list">
+                  <li>More accessible for participants juggling caregiving, business operations, or long geographic distances</li>
+                  <li>Lacks spontaneous, in-the-room moments</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="format-card format-card--hybrid">
+              <div class="format-card__bar"></div>
+              <div class="format-card__body">
+                <h3 class="format-card__title">"New hybrid"</h3>
+                <p class="format-card__desc">"New hybrid" is built for cohorts that crave the connection of in-person and the practicality of online delivery.</p>
+                 <ul class="format-card__list">
+                  <li>The cohort is never split: everyone is in-person together for the first and last workshops, and live online together for the workshops in between</li>
+                  <li>Works for rural and remote regions</li>
+                </ul>
+
+               
+              </div>
+            </div>
+
+          </div>
+
+
+          <!-- FEATURE COMPARISON CHART -->
+          <div class="learning__viz feature-chart">
+            <p class="feature-chart__caption">Each delivery format has real strengths and real trade-offs. The right choice depends on who the learners are, where they are, and what outcomes matter most.</p>
+            <div class="feature-chart__scroll">
+              <table class="feature-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Feature</th>
+                    <th scope="col" class="feature-table__col feature-table__col--inperson">In-person</th>
+                    <th scope="col" class="feature-table__col feature-table__col--virtual">Virtual</th>
+                    <th scope="col" class="feature-table__col feature-table__col--hybrid">New hybrid</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Quality training content</th>
+                    <td class="checked checked--inperson"><span aria-label="Yes">✓</span></td>
+                    <td class="checked checked--virtual"><span aria-label="Yes">✓</span></td>
+                    <td class="checked checked--hybrid"><span aria-label="Yes">✓</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Spontaneous individual support</th>
+                    <td class="checked checked--inperson"><span aria-label="Yes">✓</span></td>
+                    <td class="unchecked" aria-label="No"></td>
+                    <td class="checked checked--hybrid"><span aria-label="Yes">✓</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Peer-to-peer interaction</th>
+                    <td class="checked checked--inperson"><span aria-label="Yes">✓</span></td>
+                    <td class="unchecked" aria-label="No"></td>
+                    <td class="checked checked--hybrid"><span aria-label="Yes">✓</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Scalability</th>
+                    <td class="unchecked" aria-label="No"></td>
+                    <td class="checked checked--virtual"><span aria-label="Yes">✓</span></td>
+                    <td class="checked checked--hybrid"><span aria-label="Yes">✓</span></td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Convenience</th>
+                    <td class="unchecked" aria-label="No"></td>
+                    <td class="checked checked--virtual"><span aria-label="Yes">✓</span></td>
+                    <td class="checked checked--hybrid"><span aria-label="Yes">✓</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       LEARNING 04 — Coaching
+       ============================================ -->
+  <section class="learning section--white" id="l4">
+    <div class="container">
+      <div class="learning__inner reveal">
+        <div class="learning__num">04</div>
+        <div>
+          <p class="eyebrow">Key Learning:</p>
+          <h2 class="learning__title">One-to-one coaching is what participants told us they valued most.</h2>
+          <p class="learning__lede">Coaching closes the gap between "I learned this" and "I did this in my business this week." After every cohort wrapped up their group learning phase, participants were able to book 1:1 time with an AI coach to work through what they'd just learned and apply it to their own business. When we asked them what made the program resonate most, they named coaching. </p>
+
+          <div class="learning__viz coaching-stats" id="coaching-stats">
+            <div class="coaching-stat">
+              <div class="coaching-stat__num" data-target="225">0</div>
+              <div class="coaching-stat__label">Hours of 1:1 coaching delivered across both programs</div>
+            </div>
+            <div class="coaching-stat">
+              <div class="coaching-stat__num" data-target="106">0</div>
+              <div class="coaching-stat__label">Businesses who took advantage of coaching</div>
+            </div>
+          </div>
+
+          <div class="coaching-callout">
+            <p>We've come to think of coaching not as an extra layer on top of the curriculum, but as the thing that turns the curriculum into outcomes.</p>
+          </div>
+
+          <div class="quote-cards">
+            <div class="quote-card">
+              <span class="quote-card__mark" aria-hidden="true">“</span>
+              <p class="quote-card__text">1:1 coaching made the course worth it. My business is a bit exceptional so the individualized support matters. I'm now thinking about automation and have a plan and a guide for implementing it.</p>
+              <p class="quote-card__attr">Virtual participant, Early AI Adoption Lab</p>
+            </div>
+            <div class="quote-card">
+              <span class="quote-card__mark" aria-hidden="true">“</span>
+              <p class="quote-card__text">One on one coaching was instrumental in helping me identify how to integrate AI into my business. I'm more confident with the different ways I can use AI to save time and effort.</p>
+              <p class="quote-card__attr">Halifax cohort participant, Early AI Adoption Lab</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- ============================================
+       CONCLUSION — Business impact
+       ============================================ -->
+  <section class="section--lace impact" id="impact">
+    <div class="container">
+      <div class="reveal impact__inner">
+
+        <p class="eyebrow">What it added up to</p>
+        <h2 class="impact__title">AI training that delivers results.</h2>
+        <p class="impact__lede">A program that builds confidence is only doing its job if that confidence translates into economic success. We asked participants what changed for their business after learning with Camp Tech.</p>
+
+        <!-- EAI Lab row -->
+        <div class="impact-row">
+          <p class="impact-row__source">From the Early AI Adoption Lab, six months after the program</p>
+          <div class="impact-stats" id="impact-stats-eai">
+            <div class="impact-stat">
+              <div class="impact-stat__num" data-target="84" data-suffix="%">0<span class="suffix">%</span></div>
+              <div class="impact-stat__label">of graduates are actively using AI in their business six months on.</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-stat__num" data-target="57" data-suffix="%">0<span class="suffix">%</span></div>
+              <div class="impact-stat__label">have planned or launched a new product or service thanks to the program.</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-stat__num" data-target="100" data-suffix="%">0<span class="suffix">%</span></div>
+              <div class="impact-stat__label">of graduates said AI has made them more productive.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BBAA row -->
+        <div class="impact-row">
+          <p class="impact-row__source">From Building Blueprints for AI Adoption, at the close of the program</p>
+          <div class="impact-stats" id="impact-stats-bbaa">
+            <div class="impact-stat">
+              <div class="impact-stat__num" data-target="87" data-suffix="%">0<span class="suffix">%</span></div>
+              <div class="impact-stat__label">of graduates left the program with a defined AI project to pursue.</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-stat__num" data-target="78" data-suffix="%">0<span class="suffix">%</span></div>
+              <div class="impact-stat__label">asked to be contacted about implementing their AI project or pursuing funding.</div>
+            </div>
+            <div class="impact-stat">
+              <div class="impact-stat__num" data-target="93" data-suffix="%">0<span class="suffix">%</span></div>
+              <div class="impact-stat__label">said their knowledge of AI tools improved through the training.</div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FRAME — we meet people where they are
+       ============================================ -->
+  <section class="section--green frame frame--closing">
+    <div class="container">
+      <p class="eyebrow reveal">The thread that ran through all of it</p>
+      <p class="frame__quote reveal" style="color: var(--lace);">We must meet people where they are.</p>
+      <p class="frame__body reveal" style="color: rgba(245, 238, 222, 0.88);">That phrase is the core of how Camp Tech designs and delivers training, and we mean it on two levels at once.</p>
+      <br/>
+      <p class="frame__body reveal" style="color: rgba(245, 238, 222, 0.88);">We meet people where they are <em>programmatically</em>. Every cohort is shaped by the geography, the sectors, and the lived realities of the learners we're working with. The questions a fishmonger in Halifax brings to a session are not the same questions a manufacturer in Thunder Bay brings, and we build for that difference rather than around it.</p>
+      <br/>
+      <p class="frame__body reveal" style="color: rgba(245, 238, 222, 0.88);">And we meet people where they are <em>literally</em>. In their towns, in online rooms together, in the places where learning still does its best work. The findings above are what that approach taught us, and the framework that follows is what we're building next from those lessons.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       THE AI ADOPTION ATLAS
+       ============================================ -->
+  <section class="atlas-section" id="adoption-map">
+    <div class="container">
+      <div class="section__head reveal atlas-intro">
+        <p class="eyebrow">Looking ahead: a new framework</p>
+        <h2>The AI Adoption Atlas.</h2>
+        <p>We had a front-row seat watching over 200 businesses move through AI adoption in real time. We saw what changes from week one to week six. We saw the moments when curiosity tipped into commitment, when one-off tool use turned into integrated workflows, and when individual experimentation started to look like organizational strategy. The Atlas is the framework we built from what we saw.</p>
+        
+      </div>
+
+      <!-- The Climb: 5 stages, with phase grouping -->
+      <div class="atlas-block reveal" aria-label="The five stages of AI adoption">
+        <p class="atlas-subhead">The five stages</p>
+        <div class="climb">
+          <div class="climb__steps">
+            <div class="climb-step climb-step--1">
+              <div class="climb-step__num">Stage 01</div>
+              <h3 class="climb-step__name">Awareness</h3>
+              <div class="climb-step__tag">"We see the potential."</div>
+            </div>
+            <div class="climb-step climb-step--2">
+              <div class="climb-step__num">Stage 02</div>
+              <h3 class="climb-step__name">Experimentation</h3>
+              <div class="climb-step__tag">"We're trying things out."</div>
+            </div>
+            <div class="climb-step climb-step--3">
+              <div class="climb-step__num">Stage 03</div>
+              <h3 class="climb-step__name">Integration</h3>
+              <div class="climb-step__tag">"AI is part of how we work."</div>
+            </div>
+            <div class="climb-step climb-step--4">
+              <div class="climb-step__num">Stage 04</div>
+              <h3 class="climb-step__name">Strategic Deployment</h3>
+              <div class="climb-step__tag">"AI is driving our growth."</div>
+            </div>
+            <div class="climb-step climb-step--5">
+              <div class="climb-step__num">Stage 05</div>
+              <h3 class="climb-step__name">Organizational Scaling</h3>
+              <div class="climb-step__tag">"It's how we operate."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The 7 dimensions (icon grid) -->
+      <div class="atlas-block reveal">
+        <p class="atlas-subhead">Measured across seven dimensions</p>
+        <div class="dimension-grid">
+          <div class="dimension-item">
+            <div class="dimension-item__icon-wrap">
+              <svg class="dimension-item__icon" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
+                <circle cx="8" cy="20" r="3" />
+                <circle cx="20" cy="20" r="5" />
+                <circle cx="33" cy="20" r="7" />
+              </svg>
+            </div>
+            <h4 class="dimension-item__name">Frequency &amp; Depth</h4>
+            <p class="dimension-item__desc">How often AI tools are used, and across how many business functions.</p>
+          </div>
+          <div class="dimension-item">
+            <div class="dimension-item__icon-wrap">
+              <svg class="dimension-item__icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6 28 L16 18 L22 24 L34 11" />
+                <polyline points="25 11 34 11 34 20" />
+              </svg>
+            </div>
+            <h4 class="dimension-item__name">Business Outcomes</h4>
+            <p class="dimension-item__desc">Time saved, revenue growth, quality lift, customer satisfaction.</p>
+          </div>
+          <div class="dimension-item">
+            <div class="dimension-item__icon-wrap">
+              <svg class="dimension-item__icon" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
+                <rect x="6" y="24" width="7" height="10" rx="1.5" />
+                <rect x="16.5" y="16" width="7" height="18" rx="1.5" />
+                <rect x="27" y="7" width="7" height="27" rx="1.5" />
+              </svg>
+            </div>
+            <h4 class="dimension-item__name">Skill Sophistication</h4>
+            <p class="dimension-item__desc">From basic prompting to custom-built AI applications.</p>
+          </div>
+          <div class="dimension-item">
+            <div class="dimension-item__icon-wrap">
+              <svg class="dimension-item__icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="14" cy="14" r="5" />
+                <path d="M5 33 c0 -6 4 -9 9 -9 s9 3 9 9" />
+                <circle cx="29" cy="17" r="4" />
+                <path d="M26 32 c0 -4.5 1.5 -6.5 5 -6.5 s5.5 2 5.5 6.5" />
+              </svg>
+            </div>
+            <h4 class="dimension-item__name">Jobs &amp; Employment</h4>
+            <p class="dimension-item__desc">Roles created, retained, or upskilled through AI adoption.</p>
+          </div>
+          <div class="dimension-item">
+            <div class="dimension-item__icon-wrap">
+              <svg class="dimension-item__icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true">
+                <line x1="11" y1="19" x2="29" y2="11" stroke-linecap="round" />
+                <line x1="11" y1="21" x2="29" y2="29" stroke-linecap="round" />
+                <circle cx="8" cy="20" r="4.5" fill="currentColor" />
+                <circle cx="32" cy="10" r="4.5" fill="currentColor" />
+                <circle cx="32" cy="30" r="4.5" fill="currentColor" />
+              </svg>
+            </div>
+            <h4 class="dimension-item__name">Workflow Integration</h4>
+            <p class="dimension-item__desc">Whether AI is a side tool or a standard part of business processes.</p>
+          </div>
+          <div class="dimension-item">
+            <div class="dimension-item__icon-wrap">
+              <svg class="dimension-item__icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 5 L33 10 v9 c0 8 -5 13 -13 16 c-8 -3 -13 -8 -13 -16 v-9 Z" />
+                <path d="M14 20 l4.5 4.5 l8 -9" stroke-linecap="round" />
+              </svg>
+            </div>
+            <h4 class="dimension-item__name">Governance &amp; Risk</h4>
+            <p class="dimension-item__desc">Data privacy, compliance, quality controls, ethical use.</p>
+          </div>
+          <div class="dimension-item">
+            <div class="dimension-item__icon-wrap">
+              <svg class="dimension-item__icon" viewBox="0 0 40 40" fill="currentColor" aria-hidden="true">
+                <line x1="20" y1="20" x2="20" y2="8" stroke="currentColor" stroke-width="2.4" />
+                <line x1="20" y1="20" x2="9" y2="30" stroke="currentColor" stroke-width="2.4" />
+                <line x1="20" y1="20" x2="31" y2="30" stroke="currentColor" stroke-width="2.4" />
+                <circle cx="20" cy="20" r="4.5" />
+                <circle cx="20" cy="7" r="3.5" />
+                <circle cx="8" cy="31" r="3.5" />
+                <circle cx="32" cy="31" r="3.5" />
+              </svg>
+            </div>
+            <h4 class="dimension-item__name">Organizational Spread</h4>
+            <p class="dimension-item__desc">How widely AI knowledge and use extends across the team.</p>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <!-- Looking ahead -->
+      <div class="atlas-block reveal">
+        <p class="atlas-subhead">Looking ahead</p>
+        <p>The AI Adoption Atlas is a framework we've fully built out. The next step is putting it to work, and the reach widens as it goes:</p>
+        <div class="ahead-timeline">
+          <div class="timeline-step timeline-step--1">
+            <div class="timeline-step__top">
+              <span class="timeline-step__node">01</span>
+              <span class="timeline-step__line"></span>
+            </div>
+            <div class="timeline-step__text">
+              <h4 class="timeline-step__label">At intake</h4>
+              <p class="timeline-step__desc">A diagnostic from day one that shapes how we teach each business.</p>
+            </div>
+          </div>
+          <div class="timeline-step timeline-step--2">
+            <div class="timeline-step__top">
+              <span class="timeline-step__node">02</span>
+              <span class="timeline-step__line"></span>
+            </div>
+            <div class="timeline-step__text">
+              <h4 class="timeline-step__label">Through the program</h4>
+              <p class="timeline-step__desc">A measure of movement, not just a snapshot of where someone ended up.</p>
+            </div>
+          </div>
+          <div class="timeline-step timeline-step--3">
+            <div class="timeline-step__top">
+              <span class="timeline-step__node">03</span>
+              <span class="timeline-step__line"></span>
+            </div>
+            <div class="timeline-step__text">
+              <h4 class="timeline-step__label">Across cohorts</h4>
+              <p class="timeline-step__desc">A benchmark for AI adoption across regions, sectors, and program designs.</p>
+            </div>
+          </div>
+          <div class="timeline-step timeline-step--4">
+            <div class="timeline-step__top">
+              <span class="timeline-step__node">04</span>
+              <span class="timeline-step__line"></span>
+            </div>
+            <div class="timeline-step__text">
+              <h4 class="timeline-step__label">As policy infrastructure</h4>
+              <p class="timeline-step__desc">Evidence for the bigger conversations about how to invest in AI adoption at scale.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA
+       ============================================ -->
+  <section class="cta" id="cta">
+    <div class="container">
+      <p class="eyebrow" style="color:var(--pumpkin);">Work with us</p>
+      <h2>Want to know more about these programs and what Camp Tech can do?</h2>
+      <p>Reach out to Avery Swartz, Camp Tech's founder, to learn more about what we built, what we learned, and what we can build together. We work with funders, agencies, and organizations across Canada to design AI training that meets people where they are.</p>
+      <div class="cta__buttons">
+        <a class="btn" href="mailto:avery@camptech.ca">Email Avery</a>
+        <button class="btn btn--ghost" id="share-btn" type="button" aria-label="Copy a link to this report">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.6" y1="13.5" x2="15.4" y2="17.5"></line>
+            <line x1="15.4" y1="6.5" x2="8.6" y2="10.5"></line>
+          </svg>
+          <span id="share-btn-label">Share this report</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CREDITS
+       ============================================ -->
+  <footer class="credits">
+    <div class="container">
+      <div class="credits__grid">
+        <div>
+          <h4>AI Skills Lab Canada partners</h4>
+          <div class="logo-row">
+            <img src="assets/logos/forum.png" alt="The Forum" />
+            <img src="assets/logos/growclass.png" alt="Growclass" />
+            <img src="assets/logos/digital.png" alt="DIGITAL, Canada's Global Innovation Cluster" />
+          </div>
+          <p style="margin-top:1rem;font-size:0.82rem;">Supported with co-investment from DIGITAL, Canada's Global Innovation Cluster for digital technologies.</p>
+          <p style="margin-top:1rem;font-size:0.82rem;">Special thanks to our regional host partners, The Business Centre Parry Sound Nipissing, ONSIDE, and Yukonstruct.</p>
+          <div class="logo-row logo-row--hosts">
+            <img src="assets/logos/TBC-Logo-Stc-Eng.png" alt="The Business Centre Parry Sound Nipissing" />
+            <img src="assets/logos/OnsideLogo.png" alt="ONSIDE" />
+            <img src="assets/logos/YKST_logo_horizontal_navy.png" alt="Yukonstruct" />
+          </div>
+        </div>
+        <div>
+          <h4>Building Blueprints partners</h4>
+          <div class="logo-row">
+            <img src="assets/logos/ssmic.png" alt="Sault Ste. Marie Innovation Centre" />
+            <img src="assets/logos/noic.png" alt="Northwestern Ontario Innovation Centre" />
+            <img src="assets/logos/fednor.png" alt="FedNor — Federal Economic Development Agency for Northern Ontario" />
+          </div>
+          <p style="margin-top:1rem;font-size:0.82rem;">Funded by FedNor, the Federal Economic Development Agency for Northern Ontario, with support from the Government of Canada.</p>
+        </div>
+      </div>
+      <div class="credits__bottom">
+        <div>© 2026 Camp Tech · <a href="https://www.camptech.ca">camptech.ca</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================
+    // Reading progress bar
+    // ============================================
+    const progress = document.getElementById('progress');
+    const updateProgress = () => {
+      const h = document.documentElement;
+      const scrolled = h.scrollTop;
+      const max = h.scrollHeight - h.clientHeight;
+      progress.style.width = max > 0 ? (scrolled / max * 100) + '%' : '0%';
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // ============================================
+    // Sticky nav appearance after hero
+    // ============================================
+    const nav = document.getElementById('nav');
+    const heroBottomThreshold = 600;
+    const toggleNav = () => {
+      if (window.scrollY > heroBottomThreshold) nav.classList.add('is-visible');
+      else nav.classList.remove('is-visible');
+    };
+    window.addEventListener('scroll', toggleNav, { passive: true });
+    toggleNav();
+
+    // ============================================
+    // Reveal on scroll
+    // ============================================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ============================================
+    // Hero stat counters
+    // ============================================
+    const animateCount = (el, target, suffix, duration = 1600, decimals = 0) => {
+      const start = performance.now();
+      const ease = (t) => 1 - Math.pow(1 - t, 3);
+      const format = (n) => decimals > 0 ? n.toFixed(decimals) : Math.floor(n).toString();
+      const tick = (now) => {
+        const t = Math.min((now - start) / duration, 1);
+        const value = target * ease(t);
+        el.innerHTML = format(value) + (suffix ? '<span class="suffix">' + suffix + '</span>' : '');
+        if (t < 1) requestAnimationFrame(tick);
+        else el.innerHTML = format(target) + (suffix ? '<span class="suffix">' + suffix + '</span>' : '');
+      };
+      requestAnimationFrame(tick);
+    };
+    const heroStatsEl = document.getElementById('hero-stats');
+    if (heroStatsEl) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            heroStatsEl.querySelectorAll('.stat__num').forEach(el => {
+              const target = parseInt(el.dataset.target, 10);
+              const suffix = el.dataset.suffix || '';
+              animateCount(el, target, suffix);
+            });
+            heroObserver.unobserve(heroStatsEl);
+          }
+        });
+      }, { threshold: 0.4 });
+      heroObserver.observe(heroStatsEl);
+    }
+
+    // ============================================
+    // Coaching stat counters (Learning 4)
+    // ============================================
+    const coachingStatsEl = document.getElementById('coaching-stats');
+    if (coachingStatsEl) {
+      const coachingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            coachingStatsEl.querySelectorAll('.coaching-stat__num').forEach(el => {
+              const target = parseInt(el.dataset.target, 10);
+              animateCount(el, target, '');
+            });
+            coachingObserver.unobserve(coachingStatsEl);
+          }
+        });
+      }, { threshold: 0.4 });
+      coachingObserver.observe(coachingStatsEl);
+    }
+
+    // ============================================
+    // Impact stat counters (Conclusion)
+    // ============================================
+    ['impact-stats-eai', 'impact-stats-bbaa'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            el.querySelectorAll('.impact-stat__num').forEach(numEl => {
+              const target = parseFloat(numEl.dataset.target);
+              const suffix = numEl.dataset.suffix || '';
+              const decimals = parseInt(numEl.dataset.decimals || '0', 10);
+              animateCount(numEl, target, suffix, 1600, decimals);
+            });
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(el);
+    });
+
+    // ============================================
+    // Compare bar fills
+    // ============================================
+    const compareObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.compare__fill').forEach(fill => {
+            const target = parseInt(fill.dataset.target, 10);
+            fill.style.width = target + '%';
+          });
+          compareObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    document.querySelectorAll('.compare').forEach(el => compareObserver.observe(el));
+
+    // ============================================
+    // Growth chart bars
+    // ============================================
+    const growthObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.growth-bar').forEach(bar => {
+            const pct = bar.dataset.pct;
+            if (pct) bar.style.width = pct + '%';
+          });
+          growthObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    document.querySelectorAll('.growth-chart').forEach(el => growthObserver.observe(el));
+
+    // ============================================
+    // Curve drawing animation
+    // ============================================
+    const curveObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const learn = entry.target.querySelector('#learn-curve');
+          const adopt = entry.target.querySelector('#adopt-curve');
+          if (learn) learn.style.transition = 'stroke-dashoffset 1.6s ease';
+          if (adopt) adopt.style.transition = 'stroke-dashoffset 2.2s ease 0.3s';
+          if (learn) learn.style.strokeDashoffset = '0';
+          if (adopt) adopt.style.strokeDashoffset = '0';
+          curveObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.curves').forEach(el => curveObserver.observe(el));
+
+    // ============================================
+    // Hybrid step staggered reveal
+    // ============================================
+    const hybridObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const steps = entry.target.querySelectorAll('.hybrid-step');
+          steps.forEach((step, i) => {
+            step.style.transitionDelay = (i * 120) + 'ms';
+          });
+          entry.target.classList.add('is-visible');
+          hybridObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    const hybridViz = document.getElementById('hybrid-viz');
+    if (hybridViz) hybridObserver.observe(hybridViz);
+
+    // ============================================
+    // Share button (mockup) — copy page link to clipboard
+    // ============================================
+    const shareBtn = document.getElementById('share-btn');
+    if (shareBtn) {
+      const shareLabel = document.getElementById('share-btn-label');
+      const defaultLabel = shareLabel.textContent;
+      let resetTimer;
+      shareBtn.addEventListener('click', async () => {
+        const url = window.location.href;
+        try {
+          if (navigator.share) {
+            await navigator.share({ title: document.title, url });
+            return;
+          }
+          await navigator.clipboard.writeText(url);
+        } catch (err) {
+          // user cancelled share sheet, or clipboard blocked — ignore
+          return;
+        }
+        shareBtn.classList.add('is-copied');
+        shareLabel.textContent = 'Link copied';
+        clearTimeout(resetTimer);
+        resetTimer = setTimeout(() => {
+          shareBtn.classList.remove('is-copied');
+          shareLabel.textContent = defaultLabel;
+        }, 2200);
+      });
+    }
+  </script>
+
+  <!-- ============================================
+       CANADA MAP — real outline via d3 + world-atlas
+       ============================================ -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+  <script>
+    (async function renderCanadaMap() {
+      const DOT_DATA = [
+        {lat: 46.31, lon: -79.46, city: 'North Bay', count: 12},
+        {lat: 45.55, lon: -79.32, city: 'Emsdale', count: 1},
+        {lat: 46.22, lon: -79.37, city: 'Callander', count: 1},
+        {lat: 45.77, lon: -79.40, city: 'Sundridge', count: 3},
+        {lat: 45.95, lon: -79.60, city: 'Commanda', count: 1},
+        {lat: 46.30, lon: -79.30, city: 'Corbeil', count: 1},
+        {lat: 45.33, lon: -79.22, city: 'Huntsville', count: 1},
+        {lat: 44.65, lon: -63.58, city: 'Halifax', count: 27},
+        {lat: 44.93, lon: -63.55, city: 'Enfield', count: 1},
+        {lat: 44.67, lon: -63.57, city: 'Dartmouth', count: 2},
+        {lat: 46.01, lon: -61.53, city: 'Port Hood', count: 1},
+        {lat: 44.74, lon: -63.43, city: 'East Preston', count: 1},
+        {lat: 44.73, lon: -63.66, city: 'Bedford', count: 1},
+        {lat: 46.14, lon: -60.19, city: 'Sydney', count: 1},
+        {lat: 51.05, lon: -114.07, city: 'Calgary', count: 5},
+        {lat: 43.84, lon: -79.51, city: 'Vaughan', count: 3},
+        {lat: 49.28, lon: -123.12, city: 'Vancouver', count: 11},
+        {lat: 49.28, lon: -122.79, city: 'Coquitlam', count: 1},
+        {lat: 43.73, lon: -79.76, city: 'Brampton', count: 1},
+        {lat: 53.55, lon: -113.49, city: 'Edmonton', count: 2},
+        {lat: 45.42, lon: -75.69, city: 'Ottawa', count: 2},
+        {lat: 43.32, lon: -79.80, city: 'Burlington', count: 1},
+        {lat: 46.81, lon: -71.21, city: 'Quebec', count: 1},
+        {lat: 43.65, lon: -79.38, city: 'Toronto', count: 7},
+        {lat: 56.25, lon: -120.85, city: 'Fort St John', count: 1},
+        {lat: 45.61, lon: -73.71, city: 'Laval', count: 1},
+        {lat: 45.49, lon: -73.62, city: 'Hampstead', count: 1},
+        {lat: 49.18, lon: -122.85, city: 'Surrey', count: 1},
+        {lat: 45.32, lon: -74.64, city: 'Alexandria', count: 1},
+        {lat: 43.26, lon: -79.87, city: 'Hamilton', count: 2},
+        {lat: 49.90, lon: -97.14, city: 'Winnipeg', count: 1},
+        {lat: 50.45, lon: -104.62, city: 'Regina', count: 1},
+        {lat: 45.02, lon: -74.73, city: 'Cornwall', count: 1},
+        {lat: 43.84, lon: -79.09, city: 'Pickering', count: 1},
+        {lat: 45.50, lon: -73.57, city: 'Montreal', count: 4},
+        {lat: 49.32, lon: -117.66, city: 'Castlegar', count: 1},
+        {lat: 43.20, lon: -80.38, city: 'Paris', count: 1},
+        {lat: 48.43, lon: -123.37, city: 'Victoria', count: 1},
+        {lat: 52.27, lon: -113.81, city: 'Red Deer', count: 2},
+        {lat: 49.32, lon: -123.07, city: 'North Vancouver', count: 1},
+        {lat: 49.50, lon: -117.29, city: 'Nelson', count: 1},
+        {lat: 49.92, lon: -97.74, city: 'Elie', count: 1},
+        {lat: 43.76, lon: -79.41, city: 'North York', count: 1},
+        {lat: 43.59, lon: -79.64, city: 'Mississauga', count: 1},
+        {lat: 43.20, lon: -79.55, city: 'Grimsby', count: 1},
+        {lat: 44.92, lon: -75.83, city: 'Merrickville', count: 1},
+        {lat: 46.24, lon: -63.13, city: 'Charlottetown', count: 1},
+        {lat: 44.23, lon: -76.49, city: 'Kingston', count: 1},
+        {lat: 50.04, lon: -110.68, city: 'Medicine Hat', count: 1},
+        {lat: 60.72, lon: -135.06, city: 'Whitehorse', count: 10},
+        {lat: 60.75, lon: -137.51, city: 'Haines Junction', count: 1},
+        {lat: 63.59, lon: -135.90, city: 'Mayo', count: 1},
+        {lat: 60.06, lon: -128.71, city: 'Watson Lake', count: 1},
+        {lat: 46.51, lon: -84.35, city: 'Sault Ste. Marie', count: 20},
+        {lat: 45.97, lon: -81.93, city: 'Little Current', count: 1},
+        {lat: 46.30, lon: -83.79, city: 'Bruce Mines', count: 1},
+        {lat: 45.93, lon: -82.18, city: 'Gordon', count: 1},
+        {lat: 46.25, lon: -83.56, city: 'Thessalon', count: 1},
+        {lat: 46.32, lon: -84.04, city: 'Richards Landing', count: 1},
+        {lat: 46.27, lon: -83.98, city: 'Hilton Beach', count: 1},
+        {lat: 51.04, lon: -93.83, city: 'Red Lake', count: 1},
+        {lat: 49.77, lon: -94.49, city: 'Kenora', count: 3},
+        {lat: 49.78, lon: -92.84, city: 'Dryden', count: 1},
+        {lat: 48.61, lon: -93.40, city: 'Fort Frances', count: 1},
+        {lat: 48.38, lon: -89.25, city: 'Thunder Bay', count: 13},
+        {lat: 48.55, lon: -89.62, city: 'Kaministiquia', count: 1},
+        {lat: 48.41, lon: -89.51, city: 'Rosslyn', count: 1},
+      ];
+
+      const PROVINCE_LABELS = [
+        {lat: 54.0, lon: -125.0, code: 'BC'},
+        {lat: 54.5, lon: -115.0, code: 'AB'},
+        {lat: 54.5, lon: -106.0, code: 'SK'},
+        {lat: 54.0, lon: -98.0, code: 'MB'},
+        {lat: 50.0, lon: -86.0, code: 'ON'},
+        {lat: 52.0, lon: -73.0, code: 'QC'},
+        {lat: 47.0, lon: -66.5, code: 'NB'},
+        {lat: 45.0, lon: -62.5, code: 'NS'},
+        {lat: 46.5, lon: -63.2, code: 'PE'},
+        {lat: 49.5, lon: -57.0, code: 'NL'},
+        {lat: 62.0, lon: -135.0, code: 'YT'},
+        {lat: 65.0, lon: -118.0, code: 'NT'},
+        {lat: 66.0, lon: -98.0, code: 'NU'},
+      ];
+
+      const SVG_NS = 'http://www.w3.org/2000/svg';
+      const svg = document.getElementById('canada-map-svg');
+      const loading = document.getElementById('map-loading');
+      const WIDTH = 1000, HEIGHT = 600;
+
+      function showFallback(message) {
+        if (loading) loading.textContent = message;
+      }
+
+      // Timeout the fetch so we don't hang forever
+      const fetchTimeout = (url, ms) => Promise.race([
+        fetch(url),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms)),
+      ]);
+
+      try {
+        if (typeof d3 === 'undefined' || typeof topojson === 'undefined') {
+          throw new Error('Libraries not loaded');
+        }
+        const res = await fetchTimeout('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json', 8000);
+        if (!res.ok) throw new Error('Fetch failed');
+        const world = await res.json();
+        const countries = topojson.feature(world, world.objects.countries);
+        const canada = countries.features.find(f => f.properties.name === 'Canada');
+        if (!canada) throw new Error('Canada feature not found');
+
+        // Lambert conformal conic, standard parallels for Canada
+        const projection = d3.geoConicConformal()
+          .parallels([49, 77])
+          .rotate([96, 0]);
+
+        // Fit Canada into our viewBox (with padding)
+        projection.fitExtent([[40, 40], [WIDTH - 40, HEIGHT - 40]], canada);
+
+        const pathGen = d3.geoPath().projection(projection);
+
+        // Clear loading text
+        if (loading) loading.remove();
+
+        // Inject styles
+        const style = document.createElementNS(SVG_NS, 'style');
+        style.textContent = `
+          .map-land { fill: #FFFFFF; stroke: #344E42; stroke-width: 1; stroke-linejoin: round; }
+          .map-dot { fill: #FA8334; stroke: #FFFFFF; stroke-width: 1.6; opacity: 0.95; }
+          .map-label { fill: #344E42; font: 600 13px 'Inter', system-ui, sans-serif; letter-spacing: 0.04em; opacity: 0.55; text-anchor: middle; pointer-events: none; }
+        `;
+        svg.appendChild(style);
+
+        // Draw Canada
+        const landPath = document.createElementNS(SVG_NS, 'path');
+        landPath.setAttribute('class', 'map-land');
+        landPath.setAttribute('d', pathGen(canada));
+        svg.appendChild(landPath);
+
+        // Province labels
+        PROVINCE_LABELS.forEach(p => {
+          const coords = projection([p.lon, p.lat]);
+          if (!coords) return;
+          const label = document.createElementNS(SVG_NS, 'text');
+          label.setAttribute('class', 'map-label');
+          label.setAttribute('x', coords[0].toFixed(1));
+          label.setAttribute('y', coords[1].toFixed(1));
+          label.textContent = p.code;
+          svg.appendChild(label);
+        });
+
+        // Dots
+        DOT_DATA.forEach(d => {
+          const coords = projection([d.lon, d.lat]);
+          if (!coords) return;
+          const dot = document.createElementNS(SVG_NS, 'circle');
+          dot.setAttribute('class', 'map-dot');
+          dot.setAttribute('cx', coords[0].toFixed(1));
+          dot.setAttribute('cy', coords[1].toFixed(1));
+          dot.setAttribute('r', '5.5');
+          const title = document.createElementNS(SVG_NS, 'title');
+          title.textContent = `${d.city}: ${d.count} participant${d.count !== 1 ? 's' : ''}`;
+          dot.appendChild(title);
+          svg.appendChild(dot);
+        });
+      } catch (err) {
+        console.warn('Map render failed:', err);
+        showFallback('Map of Canada — view on the deployed site to see participant locations.');
+      }
+    })();
+  </script>
+</body>
+</html>
