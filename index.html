@@ -540,6 +540,9 @@
       gap: clamp(1.5rem, 3vw, 3rem);
       align-items: start;
     }
+    /* Let grid items shrink so wide children (e.g. the L3 feature table)
+       scroll inside their own container instead of widening the page */
+    .learning__inner > div { min-width: 0; }
     @media (max-width: 720px) {
       .learning__inner { grid-template-columns: 1fr; gap: 1.5rem; }
     }
@@ -2751,7 +2754,7 @@
     </div>
     <div class="container hero__inner">
       <p class="eyebrow hero__eyebrow">A key learnings report from Camp Tech</p>
-      <h1><span class="hero__h1-lead">What drives AI adoption in Canadian small businesses.</span><span class="hero__h1-sub">Here's what we learned teaching SMEs from coast to coast to coast.</span></h1>
+      <h1><span class="hero__h1-lead">What drives AI adoption in Canadian small businesses?</span><span class="hero__h1-sub">Here's what we learned teaching SMEs from coast to coast to coast.</span></h1>
       <p class="hero__lede">Between April 2025 and April 2026, Camp Tech delivered two pilot programs designed to bring AI training to small businesses outside Canada's largest cities. This report shares our insights. </p>
 
       <div class="stats" id="hero-stats">
