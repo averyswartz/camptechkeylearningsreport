@@ -1426,6 +1426,75 @@
       border-color: var(--lace);
     }
 
+    /* CTA contact form (Formspree) */
+    .cta-form {
+      max-width: 520px;
+      margin: 0 auto 1.75rem;
+      text-align: left;
+    }
+    .cta-form__row { display: flex; gap: 1rem; }
+    .cta-form__row .cta-field { flex: 1; }
+    @media (max-width: 540px) {
+      .cta-form__row { flex-direction: column; gap: 0; }
+    }
+    .cta-field { display: block; margin-bottom: 1rem; }
+    .cta-field__label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--lace);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.01em;
+    }
+    .cta-field__opt { font-weight: 400; color: rgba(245, 238, 222, 0.6); }
+    .cta-form input,
+    .cta-form textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--black);
+      background: var(--white);
+      border: 1px solid rgba(245, 238, 222, 0.3);
+      border-radius: 10px;
+      padding: 0.7rem 0.85rem;
+      box-sizing: border-box;
+    }
+    .cta-form textarea { resize: vertical; min-height: 110px; line-height: 1.5; }
+    .cta-form input:focus,
+    .cta-form textarea:focus {
+      outline: 2px solid var(--pumpkin);
+      outline-offset: 1px;
+      border-color: var(--pumpkin);
+    }
+    .cta-form__gotcha { display: none; }
+    .cta-form__submit { display: block; margin: 1.35rem auto 0; cursor: pointer; }
+    .cta-form__submit:disabled { opacity: 0.6; cursor: default; }
+    .cta-form__error {
+      margin: 0.9rem 0 0;
+      font-size: 0.92rem;
+      color: var(--pumpkin);
+      text-align: center;
+    }
+    .cta-form__success {
+      max-width: 520px;
+      margin: 0 auto 1.75rem;
+      padding: 1.75rem;
+      background: rgba(245, 238, 222, 0.08);
+      border: 1px solid rgba(245, 238, 222, 0.25);
+      border-radius: var(--radius);
+    }
+    .cta-form__success-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--lace);
+      margin: 0 0 0.4rem;
+    }
+    .cta-form__success-body {
+      font-size: 1rem;
+      color: rgba(245, 238, 222, 0.85);
+      margin: 0;
+    }
+
     /* ============================================
        FOOTER / CREDITS
        ============================================ */
@@ -3595,8 +3664,35 @@
       <p class="eyebrow" style="color:var(--pumpkin);">Work with us</p>
       <h2>Want to know more about these programs and what Camp Tech can do?</h2>
       <p>Reach out to Avery Swartz, Camp Tech's founder, to learn more about what we built, what we learned, and what we can build together. We work with funders, agencies, and organizations across Canada to design AI training that meets people where they are.</p>
+      <form class="cta-form" id="cta-form" action="https://formspree.io/f/xgodgwlj" method="POST">
+        <input type="hidden" name="_subject" value="New inquiry from the Key Learnings Report" />
+        <input type="text" class="cta-form__gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="cta-form__row">
+          <label class="cta-field">
+            <span class="cta-field__label">Name</span>
+            <input type="text" name="name" required autocomplete="name" />
+          </label>
+          <label class="cta-field">
+            <span class="cta-field__label">Email</span>
+            <input type="email" name="email" required autocomplete="email" />
+          </label>
+        </div>
+        <label class="cta-field">
+          <span class="cta-field__label">Organization <span class="cta-field__opt">(optional)</span></span>
+          <input type="text" name="organization" autocomplete="organization" />
+        </label>
+        <label class="cta-field">
+          <span class="cta-field__label">Message</span>
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="btn cta-form__submit">Send message</button>
+        <p class="cta-form__error" id="cta-form-error" hidden>Something went wrong. Please try sending again in a moment.</p>
+      </form>
+      <div class="cta-form__success" id="cta-form-success" hidden>
+        <p class="cta-form__success-title">Thanks for reaching out.</p>
+        <p class="cta-form__success-body">Your message is on its way to Avery. We'll be in touch soon.</p>
+      </div>
       <div class="cta__buttons">
-        <a class="btn" href="mailto:avery@camptech.ca">Email Avery</a>
         <button class="btn btn--ghost" id="share-btn" type="button" aria-label="Copy a link to this report">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="18" cy="5" r="3"></circle>
@@ -3856,6 +3952,36 @@
           shareBtn.classList.remove('is-copied');
           shareLabel.textContent = defaultLabel;
         }, 2200);
+      });
+    }
+
+    // ============================================
+    // CTA contact form — Formspree AJAX submit
+    // ============================================
+    const ctaForm = document.getElementById('cta-form');
+    if (ctaForm) {
+      ctaForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const errorEl = document.getElementById('cta-form-error');
+        const successEl = document.getElementById('cta-form-success');
+        const submitBtn = ctaForm.querySelector('.cta-form__submit');
+        errorEl.hidden = true;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        try {
+          const res = await fetch(ctaForm.action, {
+            method: 'POST',
+            body: new FormData(ctaForm),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (!res.ok) throw new Error('Submission failed');
+          ctaForm.hidden = true;
+          successEl.hidden = false;
+        } catch (err) {
+          errorEl.hidden = false;
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send message';
+        }
       });
     }
   </script>
